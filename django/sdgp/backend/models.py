@@ -10,13 +10,13 @@ class User(models.Model):
     last_login = models.DateTimeField(verbose_name='last login', auto_now=True, null=True)
 
 class Food(models.Model):
-    image = models.CharField(max_lenth = 225)
-    recipe_name = models.CharField(max_lenth =100)
-    total_time = models.CharField(max_lenth = 20)
-    cuisine = models.CharField(max_lenth=200)
-    ingredients = models.TextField(max_lenth=20000)
-    cooking_method = models.TextField(max_lenth=20000)
-    serving = models.CharField(max_lenth=20)
+    image = models.CharField(max_length = 225)
+    recipe_name = models.CharField(max_length =100)
+    total_time = models.CharField(max_length = 20)
+    cuisine = models.CharField(max_length=200)
+    ingredients = models.TextField(max_length=20000)
+    cooking_method = models.TextField(max_length=20000)
+    serving = models.CharField(max_length=20)
     
     
   
