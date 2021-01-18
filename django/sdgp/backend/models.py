@@ -10,7 +10,7 @@ class User(models.Model):
     last_login = models.DateTimeField(verbose_name='last login', auto_now=True, null=True)
 
 class Food(models.Model):
-    
+    image = models.CharField(max_lenth = 225)
     recipe_name = models.CharField(max_lenth =100)
     total_time = models.CharField(max_lenth = 20)
     cuisine = models.CharField(max_lenth=200)
