@@ -31,6 +31,12 @@ export default {
               CameraScreen: 'five',
             },
           },
+          Login: {
+            screens: {
+              LoginScreen: 'six',
+            },
+          },
+
         },
       },
       NotFound: '*',

@@ -25,3 +25,8 @@ export type TabThreeParamList = {
 export type TabFourParamList = {
   TabFourScreen: undefined;
 };
+
+export type Navigation = {
+  navigate: (scene: string) => void;
+};
+
