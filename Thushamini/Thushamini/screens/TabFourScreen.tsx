@@ -96,12 +96,15 @@ export default function TabFourScreen({navigation,}: StackScreenProps<RootStackP
               </View>
 
             <View style={{marginTop:20}}>  
-            <Text style={{marginTop:25, color:'#D35400',marginBottom:5}}>___________________________________________________________</Text>
-              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:-10,color:'black',marginRight:240}}>User Name</Text>
-              <Text style={{marginTop:-10, color:'#D35400',marginBottom:5}}>___________________________________________________________</Text>
-              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:-10 ,color:'black',marginRight:240}}>Email</Text>
-              <Text style={{marginTop:-10, color:'#D35400',marginBottom:5}}>___________________________________________________________</Text>
-              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:15,color:'black',marginRight:240}}>Preferences</Text>
+            <Text style={{marginTop:25, color:'#D35400',marginBottom:5,borderBottomColor:'#D35400',
+    borderBottomWidth:2}}></Text>
+              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:-10,color:'black',marginRight:280}}>User Name</Text>
+              <Text style={{marginTop:-10, color:'#D35400',marginBottom:5,borderBottomColor:'#D35400',
+    borderBottomWidth:2}}></Text>
+              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:-10 ,color:'black',marginRight:280}}>Email</Text>
+              <Text style={{marginTop:-10, color:'#D35400',marginBottom:5,borderBottomColor: '#D35400',
+    borderBottomWidth:2}}></Text>
+              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:15,color:'black',marginRight:270}}>Preferences</Text>
               
               <Text style={{padding:10, fontWeight:'bold',fontSize:5,marginBottom:"50%",color:'black'}}></Text>
 

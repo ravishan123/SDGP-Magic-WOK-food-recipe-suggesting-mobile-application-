@@ -39,28 +39,39 @@ import { Text, View } from '../components/Themed';
         <View>
       <Text style={{padding:10, fontWeight:'bold',fontSize:15,marginTop:30,color:'black'}}>Enter User Name</Text>
       <TextInput
-      style={{ height: 30, borderColor: 'gray', borderWidth:0,marginLeft:170,marginTop:-20,marginHorizontal:10 }}/>
-      <Text style={{padding:10, fontWeight:'bold',fontSize:15,color:'black',marginLeft:150,marginTop:-20}}>________________________________</Text>
-      
+      style={{ height: 50, borderColor: 'gray', borderWidth:0,marginLeft:170,marginTop:-20,marginHorizontal:10 }}/>
+      <View>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:15,color:'black',marginLeft:160,marginTop:-53,borderBottomColor: 'black',
+    borderBottomWidth:3}}></Text>
+      </View>
       </View>
       <View>
       <Text style={{padding:10, fontWeight:'bold',fontSize:15,marginTop:20,color:'black'}}>Enter Email</Text>
       <TextInput
-      style={{ height: 30, borderColor: 'gray', borderWidth:0,marginLeft:170,marginTop:-20 ,marginHorizontal:10}}/>
-      <Text style={{padding:10, fontWeight:'bold',fontSize:15,color:'black',marginLeft:150,marginTop:-20,elevation:5}}>________________________________</Text>
+      style={{ height: 50, borderColor: 'gray', borderWidth:0,marginLeft:170,marginTop:-20 ,marginHorizontal:10}}/>
+      <View>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:15,color:'black',marginLeft:160,marginTop:-53,borderBottomColor: 'black',
+    borderBottomWidth:3}}></Text>
       </View>
       <Text style={{padding:10, fontWeight:'bold',fontSize:20,marginTop:30,color:'black'}}>Change Password</Text>
       <View>
       <Text style={{padding:10, fontWeight:'bold',fontSize:15,marginTop:20,color:'black'}}>Current Password</Text>
       <TextInput
-      style={{ height: 30, borderColor: 'gray', borderWidth:0,marginLeft:170,marginTop:-20 ,marginHorizontal:10}}/>
-      <Text style={{padding:10, fontWeight:'bold',fontSize:15,color:'black',marginLeft:150,marginTop:-20}}>________________________________</Text>
+      style={{ height: 50, borderColor: 'gray', borderWidth:0,marginLeft:170,marginTop:-20 ,marginHorizontal:10}}/>
+      <View>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:15,color:'black',marginLeft:160,marginTop:-53,borderBottomColor: 'black',
+    borderBottomWidth:3}}></Text>
+      </View>
       </View>
       <View>
       <Text style={{padding:10, fontWeight:'bold',fontSize:15,marginTop:20,color:'black'}}>New Password</Text>
       <TextInput
-      style={{ height: 30, borderColor: 'white', borderWidth:1,marginLeft:170,marginTop:-20,marginHorizontal:10}}/>
-      <Text style={{padding:10, fontWeight:'bold',fontSize:15,color:'black',marginLeft:150,marginTop:-20}}>________________________________</Text>
+      style={{ height: 50, borderColor: 'white', borderWidth:1,marginLeft:170,marginTop:-20,marginHorizontal:10}}/>
+      <View>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:15,color:'black',marginLeft:160,marginTop:-53,borderBottomColor: 'black',
+    borderBottomWidth:3}}></Text>
+      </View>
+      </View>
       </View>
       </View>
       <View style={{marginTop:50}}>
