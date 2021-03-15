@@ -82,27 +82,10 @@ export default class TabFourScreen extends Component {
           <Text>
             search
           </Text>
-        </TouchableOpacity>
-
-
-        
-
-
-                   
-        
-
-         
-
+        </TouchableOpacity>         
       </Container>
     );
-
-
-  }
-
-
-    
-  
-  
+  }  
 }
 
 const styles = StyleSheet.create({
