@@ -1,8 +1,7 @@
 import * as React  from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
 import { StyleSheet, Image, BackHandler,Platform, Button,ImageBackground, } from 'react-native';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import Settings from './SettingScreen';
+import { LongPressGestureHandler, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { RootStackParamList } from '../types';
 
 import EditScreenInfo from '../components/EditScreenInfo';
@@ -11,6 +10,7 @@ import { Text, View } from '../components/Themed';
 import * as ImagePicker from 'expo-image-picker';
 import  { useState, useEffect } from 'react';
 import {shouldUseActivityState} from 'react-native-screens';
+import TabTwoScreen from './TabTwoScreen';
 
 
 
@@ -56,11 +56,11 @@ export default function TabFourScreen({navigation,}: StackScreenProps<RootStackP
             <View> 
             <View style={{backgroundColor:'black',width:'100%',height:70}}>
             <TouchableOpacity>
-              <Image source={require('../components/images/s2.jpg')} style={{width: 30, height: 30, borderRadius:100 ,marginLeft:'85%', marginTop:20}}></Image> 
+              <Image source={require('../components/Images/s2.jpg')} style={{width: 30, height: 30, borderRadius:100 ,marginLeft:'85%', marginTop:20}}></Image> 
               </TouchableOpacity>
               </View>
               <View>
-            <Image source={require('../components/images/w1.jpg')} style={{width:'100%', height: 175,}}></Image> 
+            <Image source={require('../components/Images/w1.jpg')} style={{width:'100%', height: 175,}}></Image> 
             </View>
               
             
