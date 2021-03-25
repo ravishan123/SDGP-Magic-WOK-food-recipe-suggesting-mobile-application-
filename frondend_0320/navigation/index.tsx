@@ -1,9 +1,13 @@
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme, DarkTheme, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
-
+import help from '../screens/help';
+import accountSetting from '../screens/accountSetting';
+import about from '../screens/about';
+import searchbar from '../screens/searchbar';
 import NotFoundScreen from '../screens/NotFoundScreen';
+import SettingsScreen from '../screens/SettingScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -15,6 +19,7 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+
       <RootNavigator />
     </NavigationContainer>
   );
@@ -29,6 +34,11 @@ function RootNavigator() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Root" component={BottomTabNavigator} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen name="Setting" component={SettingsScreen} options={{title:'setting'}}/>
+      <Stack.Screen name="help" component={help} options={{title:'help'}}/>
+      <Stack.Screen name="about" component={about} options={{title:'about'}}/>
+      <Stack.Screen name="searchbar" component={searchbar} options={{title:'searchbar'}}/>
+      <Stack.Screen name="accountSetting" component={accountSetting} options={{title:'accountSetting'}}/>
     </Stack.Navigator>
   );
 }
