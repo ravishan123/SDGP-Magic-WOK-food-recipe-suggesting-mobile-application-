@@ -10,11 +10,11 @@ import { Text, View } from '../components/Themed';
 import * as ImagePicker from 'expo-image-picker';
 import  { useState, useEffect } from 'react';
 import {shouldUseActivityState} from 'react-native-screens';
-import TabTwoScreen from './TabTwoScreen';
+import TabTwoScreen from './search';
 
 
 
-export default function TabFourScreen({navigation,}: StackScreenProps<RootStackParamList, 'NotFound'>) {
+export default function TabFourScreen({navigation,}: StackScreenProps<RootStackParamList, 'Setting'>) {
 
   
     const [image, setImage] = useState(null);
@@ -26,6 +26,7 @@ export default function TabFourScreen({navigation,}: StackScreenProps<RootStackP
           if (status !== 'granted') {
             alert('Sorry, we need camera roll permissions to make this work!');
           }
+          
         }
       })();
     }, []);
@@ -55,7 +56,7 @@ export default function TabFourScreen({navigation,}: StackScreenProps<RootStackP
           
             <View> 
             <View style={{backgroundColor:'black',width:'100%',height:70}}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> navigation.navigate('Setting')}>
               <Image source={require('../components/Images/s2.jpg')} style={{width: 30, height: 30, borderRadius:100 ,marginLeft:'85%', marginTop:20}}></Image> 
               </TouchableOpacity>
               </View>
