@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Q
 from rest_framework import generics
 from .serializers import RecipeSerializer
 from rest_framework.views import APIView
@@ -281,4 +282,18 @@ class ImageRecognitionView(APIView):
         print("predicted dish - ", pred_dish_name)
         output = Recipe.objects.filter(recipe_name=pred_dish_name)
         serializer = RecipeSerializer(output, many=True)
+        return Response(serializer.data)
+ 
+class RecipeSearchByIngredient(APIView):
+    def post(self, request, *args, **kwargs):
+        search_key = request.data['search_key']
+        print(search_key)
+        results = Recipe.objects.filter(
+                Q(cooking_method__icontains=search_key) |
+                Q(cuisine__icontains=search_key) |
+                Q(ingredients__icontains=search_key) |
+                Q(recipe_name__icontains=search_key)
+            )
+        print(results)
+        serializer = RecipeSerializer(results, many=True)
         return Response(serializer.data)
