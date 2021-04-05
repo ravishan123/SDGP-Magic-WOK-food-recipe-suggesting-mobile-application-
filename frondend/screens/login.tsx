@@ -36,12 +36,13 @@ export default class login extends React.Component {
       />
 
       <TextInput
-        style={styles.input}
-        placeholder='Password :'
-        autoCapitalize="none"
-        placeholderTextColor='white'
-        onChangeText={val => this.onChangeText('Password', val)}
-      />
+          style={styles.input}
+          placeholder='Password :'
+          secureTextEntry={true}
+          autoCapitalize="none"
+          placeholderTextColor='white'
+          onChangeText={val => this.onChangeText('password', val)}
+        />
        <View style={{marginTop:50,padding:15,borderRadius: 20}}>
       <Button
         title='  SignIn  '
@@ -76,3 +77,4 @@ container: {
  
 }
 });
+ 

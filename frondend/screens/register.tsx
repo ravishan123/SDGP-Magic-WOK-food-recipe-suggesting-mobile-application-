@@ -64,6 +64,15 @@ export default class register extends React.Component {
           placeholderTextColor='white'
           onChangeText={val => this.onChangeText('password', val)}
         />
+         <TextInput
+          style={styles.input}
+          placeholder='Confirm Password :'
+          secureTextEntry={true}
+          autoCapitalize="none"
+          placeholderTextColor='white'
+          onChangeText={val => this.onChangeText('Confirm_password', val)}
+        />
+
         <TextInput
           style={styles.input}
           placeholder='Email :'
