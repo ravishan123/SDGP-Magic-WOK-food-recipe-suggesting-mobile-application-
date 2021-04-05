@@ -27,7 +27,7 @@ SECRET_KEY = 'mvs70#!7t*k8pnnd^s*&hn23h)kqoy+21yh92k%o7kdtvb9q!y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['magic-wok.herokuapp.com']
 
 
 # Application definition
