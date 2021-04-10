@@ -9,11 +9,14 @@ import SearchResultsScreen from '../screens/components/SubScreens/SearchResultsS
 import help from '../screens/help';
 import accountSetting from '../screens/accountSetting';
 import about from '../screens/about';
+import register from '../screens/register';
+import login from '../screens/login';
 import searchbar from '../screens/searchbar';
 import SettingsScreen from '../screens/SettingScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
+import TabOneScreen from '../screens/TabOneScreen';
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -34,6 +37,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="register" component={register} options={{title:'register'}}/>
       <Stack.Screen name="Root" component={BottomTabNavigator} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="PredResults" component={PredResultsScreen} options={{ title: 'Predicted Results' }} />
@@ -43,6 +47,8 @@ function RootNavigator() {
       <Stack.Screen name="about" component={about} options={{title:'about'}}/>
       <Stack.Screen name="searchbar" component={searchbar} options={{title:'searchbar'}}/>
       <Stack.Screen name="accountSetting" component={accountSetting} options={{title:'accountSetting'}}/>
+      <Stack.Screen name="login" component={login} options={{title:'login'}}/>
+      <Stack.Screen name="one" component={TabOneScreen} options={{title:'one'}}/>
     </Stack.Navigator>
   );
 }

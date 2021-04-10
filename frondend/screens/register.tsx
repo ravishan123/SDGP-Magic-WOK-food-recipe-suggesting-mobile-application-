@@ -4,13 +4,15 @@ import * as React from 'react';
 import  { Component } from "react";
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import { StackScreenProps } from '@react-navigation/stack';
+import { RootStackParamList } from '../types';
 
-export default class register extends React.Component {
-  state = {
+export default function register ({navigation,} : StackScreenProps<RootStackParamList, 'login'>){
+   state = {
     username: '', password: '', email: '', phone_number: ''
   }
-  onChangeText = (key, val) => {
-    this.setState({ [key]: val })
+ onChangeText = (key, val) => {
+     this.setState({ [key]: val })
   }
   register = async () => {
     const { username, password, email, phone_number } = this.state
@@ -20,9 +22,9 @@ export default class register extends React.Component {
     } catch (err) {
       console.log('error Register: ', err)
     }
-  }
+  };
  
-  render() {
+  
     return (
       <View >
         <ScrollView>
@@ -89,10 +91,10 @@ export default class register extends React.Component {
         />
         </View>
         <View style={{marginTop:50,padding:15,borderRadius:50}}>
-          <TouchableOpacity>
+          <TouchableOpacity >
         <Button
           title='  Register  '
-          onPress={this.register}
+          onPress={()=> navigation.navigate('login')}
           color={'#407294'}
         />
         </TouchableOpacity>
@@ -100,9 +102,11 @@ export default class register extends React.Component {
         <Text style={{padding:10,fontWeight:'bold',fontSize:3,marginTop:'20%',color:'white'}}>magic Wok</Text>
         </ScrollView>
       </View>
-    )
+    
+  
+    );
+    
   }
-}
 
 const styles = StyleSheet.create({
   input: {
@@ -121,5 +125,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
    
-  }
-})
+  },
+}
+
+);
+

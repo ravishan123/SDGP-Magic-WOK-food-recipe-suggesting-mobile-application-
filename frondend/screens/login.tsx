@@ -6,7 +6,7 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootStackParamList } from '../types';
 
-export default class login extends React.Component {
+export default function register ({navigation,} : StackScreenProps<RootStackParamList, 'Root'>) {
   state = {
     username: '', password: ''
   }
@@ -23,7 +23,7 @@ export default class login extends React.Component {
     }
   }
  
-  render() {
+  
     return(
     <View style={styles.container}>
       <Text style={{padding:10, fontWeight:'bold',fontSize:35,marginTop:30,color:'black',textAlign:'center'}}>Sign In</Text>
@@ -44,18 +44,20 @@ export default class login extends React.Component {
           onChangeText={val => this.onChangeText('password', val)}
         />
        <View style={{marginTop:50,padding:15,borderRadius: 20}}>
+      <TouchableOpacity >
       <Button
         title='  SignIn  '
-        onPress={this.signIn}
+        onPress={()=> navigation.navigate('Root')}
         color={'#407294'}
       />
+      </TouchableOpacity>
       </View>
         
     </View>
     
   );
 }
-}
+
 
 // }
 const styles = StyleSheet.create({
