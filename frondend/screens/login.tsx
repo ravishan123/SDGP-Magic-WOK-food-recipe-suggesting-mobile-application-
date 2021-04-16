@@ -7,32 +7,15 @@ import { Text, View } from '../components/Themed';
 import { RootStackParamList } from '../types';
 
 export default function register ({navigation,} : StackScreenProps<RootStackParamList, 'Root'>) {
-  state = {
-    username: '', password: ''
-  }
-  onChangeText = (key, val) => {
-    this.setState({ [key]: val })
-  }
-  signIn = async () => {
-    const { username, password } = this.state
-    try {
-      // here place your signup logic
-      console.log('user successfully signed up!: ', success)
-    } catch (err) {
-      console.log('error signing up: ', err)
-    }
-  }
- 
   
-    return(
+   return(
     <View style={styles.container}>
-      <Text style={{padding:10, fontWeight:'bold',fontSize:35,marginTop:30,color:'black',textAlign:'center'}}>Sign In</Text>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:35,marginTop:30,color:'black',textAlign:'center'}}>Login</Text>
       <TextInput
         style={styles.input}
         placeholder='User Name :'
         autoCapitalize="none"
         placeholderTextColor='white'
-        onChangeText={val => this.onChangeText('username', val)}
       />
 
       <TextInput
@@ -41,12 +24,11 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
           secureTextEntry={true}
           autoCapitalize="none"
           placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('password', val)}
         />
        <View style={{marginTop:50,padding:15,borderRadius: 20}}>
       <TouchableOpacity >
       <Button
-        title='  SignIn  '
+        title='  Login  '
         onPress={()=> navigation.navigate('Root')}
         color={'#407294'}
       />
@@ -79,4 +61,3 @@ container: {
  
 }
 });
- 

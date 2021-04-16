@@ -4,26 +4,10 @@ import * as React from 'react';
 import  { Component } from "react";
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
-import { StackScreenProps } from '@react-navigation/stack';
-import { RootStackParamList } from '../types';
+ import { StackScreenProps } from '@react-navigation/stack';
+  import { RootStackParamList } from '../types';
 
-export default function register ({navigation,} : StackScreenProps<RootStackParamList, 'login'>){
-   state = {
-    username: '', password: '', email: '', phone_number: ''
-  }
- onChangeText = (key, val) => {
-     this.setState({ [key]: val })
-  }
-  register = async () => {
-    const { username, password, email, phone_number } = this.state
-    try {
-      // here place your signup logic
-      console.log('user successfully registered!: ', success)
-    } catch (err) {
-      console.log('error Register: ', err)
-    }
-  };
- 
+export default function register ({navigation,} : StackScreenProps<RootStackParamList, 'Root'>){
   
     return (
       <View >
@@ -40,7 +24,7 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
           placeholder='First Name :'
           autoCapitalize="none"
           placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('first_name', val)}
+          // onChangeText={val => this.onChangeText('first_name', val)}
         />
 
         <TextInput
@@ -48,7 +32,7 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
           placeholder='Last Name :'
           autoCapitalize="none"
           placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('last_name', val)}
+          // onChangeText={val => this.onChangeText('last_name', val)}
         />
 
         <TextInput
@@ -56,7 +40,7 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
           placeholder='Username :'
           autoCapitalize="none"
           placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('username', val)}
+          // onChangeText={val => this.onChangeText('username', val)}
         />
         <TextInput
           style={styles.input}
@@ -64,7 +48,7 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
           secureTextEntry={true}
           autoCapitalize="none"
           placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('password', val)}
+          // onChangeText={val => this.onChangeText('password', val)}
         />
          <TextInput
           style={styles.input}
@@ -72,7 +56,7 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
           secureTextEntry={true}
           autoCapitalize="none"
           placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('Confirm_password', val)}
+          // onChangeText={val => this.onChangeText('Confirm_password', val)}
         />
 
         <TextInput
@@ -80,21 +64,21 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
           placeholder='Email :'
           autoCapitalize="none"
           placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('email', val)}
+          // onChangeText={val => this.onChangeText('email', val)}
         />
         <TextInput
           style={styles.input}
           placeholder='Phone Number :'
           autoCapitalize="none"
           placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('phone_number', val)}
+          // onChangeText={val => this.onChangeText('phone_number', val)}
         />
         </View>
         <View style={{marginTop:50,padding:15,borderRadius:50}}>
           <TouchableOpacity >
         <Button
           title='  Register  '
-          onPress={()=> navigation.navigate('login')}
+          onPress={()=> navigation.navigate('Root')} 
           color={'#407294'}
         />
         </TouchableOpacity>
@@ -106,7 +90,8 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
   
     );
     
-  }
+ 
+}
 
 const styles = StyleSheet.create({
   input: {
@@ -126,7 +111,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
    
   },
-}
-
-);
+});
 
