@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
       height:'100%',
       borderRadius:15,
       marginRight:20,
+      width:150,
       
      
     },
