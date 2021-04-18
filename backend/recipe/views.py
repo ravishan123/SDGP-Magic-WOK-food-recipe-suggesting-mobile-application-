@@ -297,3 +297,11 @@ class RecipeSearchByIngredient(APIView):
         print(results)
         serializer = RecipeSerializer(results, many=True)
         return Response(serializer.data)
+
+class HomeRecipe(APIView):
+    def get(self, request, *args, **kwargs):
+        results = Recipe.objects.filter(
+            Q(cuisine__icontains = 'Mexican')
+        )
+        serializer = RecipeSerializer(results, many=True)
+        return Response(serializer.data)

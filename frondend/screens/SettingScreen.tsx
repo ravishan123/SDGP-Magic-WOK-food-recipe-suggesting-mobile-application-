@@ -32,7 +32,7 @@
           <View>
           <Image source={require('../components/Images/s4.png')} style={{width:30, height:30, marginLeft:'80%',marginTop:-40}}></Image> 
           </View>
-          <TouchableOpacity onPress={()=> navigation.navigate('Root')}>
+          <TouchableOpacity onPress={()=> navigation.navigate('login')}>
           <Text style={{padding:15, fontWeight:'bold',fontSize:15,marginTop:25,color:'black',backgroundColor:'#fff',borderRadius:10,shadowOpacity:150,elevation:25}}>LogOut</Text>
           </TouchableOpacity>
           <View>
