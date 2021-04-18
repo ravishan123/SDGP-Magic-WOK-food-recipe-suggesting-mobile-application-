@@ -140,7 +140,7 @@ export default App;
 const styles = StyleSheet.create({
 
   innerText: {
-    color: '#C70039',
+    color: '#E65100',
     fontWeight: 'bold',
     fontSize: 25,
     marginTop:20,
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
 backgroundImage: {
     flex: 1,
     width: '100%',
-    height: 300,  
+    height: 275,  
 },
 
 bgtext:{
