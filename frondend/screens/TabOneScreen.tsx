@@ -93,6 +93,83 @@ export default function TabOneScreen({navigation,}: StackScreenProps<RootStackPa
        })
     }, []);
 
+  // Italian
+
+  const [searchedValuesItalian, setSearchedValuesItalian] = React.useState('');
+  const [isLoadingItalian, setIsLoadingItalian] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsLoadingItalian(true)
+    axios.get('http://10.0.2.2:8000/api/home_recipe_italy', {
+
+    }).then(res => {
+      console.log('res -- ', res)
+      setSearchedValuesItalian(res.data)
+      setIsLoadingItalian(false)
+    }).catch(err => {
+      console.log(err)
+      setIsLoadingItalian(false)
+     })
+  }, []);
+
+  // Japanese
+
+  const [searchedValuesJapanese, setSearchedValuesJapanese] = React.useState('');
+  const [isLoadingJapanese, setIsLoadingJapanese] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsLoadingJapanese(true)
+    axios.get('http://10.0.2.2:8000/api/home_recipe_japanese', {
+
+    }).then(res => {
+      console.log('res -- ', res)
+      setSearchedValuesJapanese(res.data)
+      setIsLoadingJapanese(false)
+    }).catch(err => {
+      console.log(err)
+      setIsLoadingJapanese(false)
+     })
+  }, []);
+
+  // Arabic
+
+  const [searchedValuesArabic, setSearchedValuesArabic] = React.useState('');
+  const [isLoadingArabic, setIsLoadingArabic] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsLoadingArabic(true)
+    axios.get('http://10.0.2.2:8000/api/home_recipe_arabic', {
+
+    }).then(res => {
+      console.log('res -- ', res)
+      setSearchedValuesArabic(res.data)
+      setIsLoadingArabic(false)
+    }).catch(err => {
+      console.log(err)
+      setIsLoadingArabic(false)
+     })
+  }, []);
+
+  // American
+
+  const [searchedValuesAmerican, setSearchedValuesAmerican] = React.useState('');
+  const [isLoadingAmerican, setIsLoadingAmerican] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsLoadingAmerican(true)
+    axios.get('http://10.0.2.2:8000/api/home_recipe_american', {
+
+    }).then(res => {
+      console.log('res -- ', res)
+      setSearchedValuesAmerican(res.data)
+      setIsLoadingAmerican(false)
+    }).catch(err => {
+      console.log(err)
+      setIsLoadingAmerican(false)
+     })
+  }, []);
+
+
 
   const Loading = () => (
     <View>
@@ -257,6 +334,120 @@ export default function TabOneScreen({navigation,}: StackScreenProps<RootStackPa
         
       </ScrollView>
     </View>
+
+    {/* Italian */}
+
+    <View style={styles.container}>
+      <Text style={styles.innerText}>     Italian</Text> 
+      <ScrollView horizontal={true}>
+        {!!searchedValuesItalian && searchedValuesItalian.map((item, key) => {
+          return(
+            <SafeAreaView style={styles.containerCard}>
+            <View style={styles.containerCard}>
+       
+            <Card style={styles.card}>
+         
+                <TouchableOpacity style={{marginLeft:5}}>
+                    <Card.Cover source={{uri: item.image}} style={styles.cardImg}/>
+                      <Card.Content>
+                        <Title>{item.recipe_name}</Title>
+                      </Card.Content>
+                     
+            </TouchableOpacity>                                    
+          </Card>
+      </View>
+    </SafeAreaView>  
+          )
+        })}
+        
+      </ScrollView>
+    </View>
+
+    {/* Japanese */}
+
+    <View style={styles.container}>
+      <Text style={styles.innerText}>     Japanese</Text> 
+      <ScrollView horizontal={true}>
+        {!!searchedValuesJapanese && searchedValuesJapanese.map((item, key) => {
+          return(
+            <SafeAreaView style={styles.containerCard}>
+            <View style={styles.containerCard}>
+       
+            <Card style={styles.card}>
+         
+                <TouchableOpacity style={{marginLeft:5}}>
+                    <Card.Cover source={{uri: item.image}} style={styles.cardImg}/>
+                      <Card.Content>
+                        <Title>{item.recipe_name}</Title>
+                      </Card.Content>
+                     
+            </TouchableOpacity>                                    
+          </Card>
+      </View>
+    </SafeAreaView>  
+          )
+        })}
+        
+      </ScrollView>
+    </View>
+
+    {/* Arabic */}
+
+    <View style={styles.container}>
+      <Text style={styles.innerText}>     Arabic</Text> 
+      <ScrollView horizontal={true}>
+        {!!searchedValuesArabic && searchedValuesArabic.map((item, key) => {
+          return(
+            <SafeAreaView style={styles.containerCard}>
+            <View style={styles.containerCard}>
+       
+            <Card style={styles.card}>
+         
+                <TouchableOpacity style={{marginLeft:5}}>
+                    <Card.Cover source={{uri: item.image}} style={styles.cardImg}/>
+                      <Card.Content>
+                        <Title>{item.recipe_name}</Title>
+                      </Card.Content>
+                     
+            </TouchableOpacity>                                    
+          </Card>
+      </View>
+    </SafeAreaView>  
+          )
+        })}
+        
+      </ScrollView>
+    </View>
+
+    {/* American */}
+
+    <View style={styles.container}>
+      <Text style={styles.innerText}>     American</Text> 
+      <ScrollView horizontal={true}>
+        {!!searchedValuesAmerican && searchedValuesAmerican.map((item, key) => {
+          return(
+            <SafeAreaView style={styles.containerCard}>
+            <View style={styles.containerCard}>
+       
+            <Card style={styles.card}>
+         
+                <TouchableOpacity style={{marginLeft:5}}>
+                    <Card.Cover source={{uri: item.image}} style={styles.cardImg}/>
+                      <Card.Content>
+                        <Title>{item.recipe_name}</Title>
+                      </Card.Content>
+                     
+            </TouchableOpacity>                                    
+          </Card>
+      </View>
+    </SafeAreaView>  
+          )
+        })}
+        
+      </ScrollView>
+    </View>
+
+
 
 
   </ScrollView>
