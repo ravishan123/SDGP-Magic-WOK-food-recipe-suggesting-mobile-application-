@@ -4,7 +4,7 @@ from rest_framework import generics
 from .serializers import RecipeSerializer
 from rest_framework.views import APIView
 import backend.settings as settings
-from .models import Recipe  
+from .models import Recipe
 from rest_framework.response import Response
 
 import tensorflow as tf
@@ -252,7 +252,7 @@ class ImageRecognitionView(APIView):
         # image = tf.image.decode_jpeg(content, channels=3)
         # image = tf.cast(image, tf.float32) / 255.0
         # image = tf.image.decode_jpeg(tf.io.decode_base64(base64.urlsafe_b64encode(b64_image.encode())), channels=3)
-        
+
         # b64_image = tf.io.decode_base64(b64_image)  # outputs  --  Invalid character found in base64
         b64_image = base64.b64decode(b64_image)
         img = Image.open(io.BytesIO(b64_image))
@@ -261,15 +261,15 @@ class ImageRecognitionView(APIView):
         img = image.img_to_array(img)
         print("-------- LOADED ---------")
         img = np.expand_dims(img, axis=0)
-        img /= 255. 
+        img /= 255.
         # print(b64_image)
         # image = tf.image.decode_jpeg(b64_image, channels=3)
-        
+
         # img = tf.image.resize_images(image, [150, 150])
         # img = image.load_img(img, target_size=(249, 249))
-        # img = image.img_to_array(img)                    
-        # img = np.expand_dims(img, axis=0)         
-        # img /= 255.                                      
+        # img = image.img_to_array(img)
+        # img = np.expand_dims(img, axis=0)
+        # img /= 255.
         print("IMG ---- ", img)
         pred = settings.model.predict(img)
         index = np.argmax(pred)
@@ -283,7 +283,7 @@ class ImageRecognitionView(APIView):
         output = Recipe.objects.filter(recipe_name=pred_dish_name)
         serializer = RecipeSerializer(output, many=True)
         return Response(serializer.data)
- 
+
 class RecipeSearchByIngredient(APIView):
     def post(self, request, *args, **kwargs):
         search_key = request.data['search_key']

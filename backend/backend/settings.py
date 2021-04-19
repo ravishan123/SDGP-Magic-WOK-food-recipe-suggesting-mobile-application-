@@ -62,7 +62,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -135,8 +135,12 @@ STATIC_URL = '/static/'
 
 
 modelFile = 'best_model_101class.hdf5'
+ingredientModelFile = 'ingredientmodel_trained_class.hdf5'
+ingredient_model_root = os.path.join(STATIC_ROOT, ingredientModelFile)
 model_root = os.path.join(STATIC_ROOT, modelFile)
 model = load_model(model_root, compile=False)
+#ingredient_model = load_model(ingredient_model_root, compile=False)
 print("------------------------")
 print(BASE_DIR)
 #D:\IIT\2nd_year\sdgp\project\backend\backend\backend\best_model_101class.hdf5
+
