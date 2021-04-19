@@ -140,7 +140,7 @@ export default class searchbar2 extends Component {
 
           
           <View style={styles.container2}>
-          <ImageBackground source={require('./components/Images/burger.png')}  style={styles.image2}>
+          <ImageBackground source={require('../components/Images/bg9.jpg')}  style={styles.image2}>
           <View style={styles.container2} >
 
           <View style={styles.circle}>
