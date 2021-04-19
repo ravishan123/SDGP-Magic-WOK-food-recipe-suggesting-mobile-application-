@@ -2,15 +2,15 @@ import * as React from 'react';
 import  { Component } from "react";
 import { StyleSheet,Image,Button,TextInput,Alert } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import { RootStackParamList } from '../types';
+
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
-import { StackScreenProps } from '@react-navigation/stack';
 
 
 
-export default function accountSetting({navigation,}: StackScreenProps<RootStackParamList, 'Setting'>){
-    const createTextAlert = () =>
+
+  class App extends Component {
+    createTextAlert = () =>
       Alert.alert(
         "Alert",
         "Submit All Information",
@@ -25,81 +25,72 @@ export default function accountSetting({navigation,}: StackScreenProps<RootStack
         { cancelable: false }
       );
   
-  
+  render(){
   return (
-    <View style={{backgroundColor:'white'}}>
+    <View>
       <ScrollView>
       <View>
-         <TouchableOpacity onPress={()=> navigation.navigate('Setting')}>
-          <Image source={require('../components/Images/k1.png')} style={{width:30, height:30, marginLeft:'5%',marginTop:30}}></Image> 
-          </TouchableOpacity>
-          </View>
-      <View>
-       <Image source={require('../components/Images/i6.jpg')} style={{width:'100%', height: 250,marginTop:10}}></Image> 
-       </View>
-      
-          
+       <Image source={require('../components/Images/food.jpg')} style={{width:'100%', height: 250}}></Image> 
        <View>
-       
-      <Text style={{padding:10, fontWeight:'bold',fontSize:35,marginTop:-170,color:'black',textAlign:'center'}}>Account Setting</Text>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:25,marginTop:-150,color:'white',marginLeft:'25%'}}>Account Setting</Text>
       </View>
+      </View>
+      <View>
+        <View>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:15,marginTop:30,color:'black'}}>Enter User Name</Text>
+      <TextInput></TextInput>
       
-  
-<View style={styles.container}>
-        <TextInput
-          style={styles.input}
-          placeholder='Enter First Name :'
-          autoCapitalize="none"
-          placeholderTextColor='#a9a9a9'
-          
-        />
-
-        <TextInput
-          style={styles.input} 
-          placeholder='Enter Last Name :'
-          autoCapitalize="none"
-          placeholderTextColor='#a9a9a9'
-          
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='Email :'
-          autoCapitalize="none"
-          placeholderTextColor='#a9a9a9'
-          
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='Current Password :'
-          secureTextEntry={true}
-          autoCapitalize="none"
-          placeholderTextColor='#a9a9a9'
-         
-        />
-         <TextInput
-          style={styles.input}
-          placeholder='New Password :'
-          secureTextEntry={true}
-          autoCapitalize="none"
-          placeholderTextColor='#a9a9a9'
-         
-        />
-          </View>
-
-      <View style={{marginTop:0}}>
-      <View style={{marginTop:50,padding:10,borderRadius:50,backgroundColor:'#fbb124',marginLeft:20,marginRight:20,borderWidth:2,borderColor:"#fbb124"}}>
-      <TouchableOpacity onPress={createTextAlert} >
-      <Text style={{color:'black',fontSize:25,fontWeight:'bold',textAlign:'center',alignContent:'center'}}>Submit</Text>
-      </TouchableOpacity>
+      <View>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:15,color:'black',marginLeft:160,marginTop:-53,borderBottomColor: 'black',
+    borderBottomWidth:3}}></Text>
       </View>
+      </View>
+      <View>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:15,marginTop:20,color:'black'}}>Enter Email</Text>
+      <TextInput
+      style={{ height: 50, borderColor: 'gray', borderWidth:0,marginLeft:170,marginTop:-20 ,marginHorizontal:10}}/>
+      <View>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:15,color:'black',marginLeft:160,marginTop:-53,borderBottomColor: 'black',
+    borderBottomWidth:3}}></Text>
+      </View>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:20,marginTop:30,color:'black'}}>Change Password</Text>
+      <View>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:15,marginTop:20,color:'black'}}>Current Password</Text>
+      <TextInput
+      style={{ height: 50, borderColor: 'gray', borderWidth:0,marginLeft:170,marginTop:-20 ,marginHorizontal:10}}/>
+      <View>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:15,color:'black',marginLeft:160,marginTop:-53,borderBottomColor: 'black',
+    borderBottomWidth:3}}></Text>
+      </View>
+      </View>
+      <View>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:15,marginTop:20,color:'black'}}>New Password</Text>
+      <TextInput
+      style={{ height: 50, borderColor: 'white', borderWidth:0,marginLeft:170,marginTop:-20,marginHorizontal:10}}/>
+      <View>
+      <Text style={{padding:10, fontWeight:'bold',fontSize:15,color:'black',marginLeft:160,marginTop:-53,borderBottomColor: 'black',
+    borderBottomWidth:3}}></Text>
+      </View>
+      </View>
+      </View>
+      </View>
+      <View style={{marginTop:50}}>
+        <TouchableOpacity>
+     { /* <Text style={{padding:10,fontWeight:'bold',fontSize:15,marginTop:30,color:'white',backgroundColor:'#D35400'}}>                                           submit              </Text> */}
+       <Button title={"Submit"} onPress={this.createTextAlert} color='#D35400' /> 
+      </TouchableOpacity>
 
-      <Text style={{padding:10,fontWeight:'bold',fontSize:3,marginTop:5,color:'white'}}>magic Wok</Text>
+      <Text style={{padding:10,fontWeight:'bold',fontSize:3,marginTop:'50%',color:'white'}}>magic Wok</Text>
+      {/* <Button 
+        title="submit"
+        onPress={() => Alert.alert('Simple Button pressed')}
+        color='#D3540099'/> */}
       </View>
       </ScrollView>
      </View>
      );
     }
-  
+  }
 
 
 const styles = StyleSheet.create({
@@ -118,21 +109,7 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
-  input: {
-    width: 280,
-    height: 55,
-    backgroundColor: 'white',
-    marginTop: 30,
-    marginLeft:5,
-    padding: 8,
-    color: 'black',
-    borderRadius: 14,
-    fontSize: 18,
-    fontWeight: '300',
-    borderWidth:1,
-    borderColor:'#fbb124'
-  },
 
 });
 
-
+export default App;
