@@ -11,12 +11,17 @@ django = "*"
 djangorestframework = "*"
 django-rest-knox = "*"
 pillow = "*"
+<<<<<<< HEAD
 gunicorn = "*"
 tensorflow = "==2.4.0"
 whitenoise = "*"
 django-cors-headers = "*"
 django-heroku = "*"
 dj-database-url = "*"
+=======
+tensorflow = "*"
+django-cors-headers = "*"
+>>>>>>> 3c1aebf1a6d80c2546dc7b9a37c192edd7cc3105
 
 [requires]
 python_version = "3.6"

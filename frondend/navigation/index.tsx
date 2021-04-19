@@ -9,11 +9,16 @@ import SearchResultsScreen from '../screens/components/SubScreens/SearchResultsS
 import help from '../screens/help';
 import accountSetting from '../screens/accountSetting';
 import about from '../screens/about';
+import register from '../screens/register';
+import login from '../screens/login';
 import searchbar from '../screens/searchbar';
+import searchbar2 from '../screens/searchbar2';
 import SettingsScreen from '../screens/SettingScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
+import TabOneScreen from '../screens/TabOneScreen';
+import First_page from '../screens/First_page';
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -34,6 +39,8 @@ const Stack = createStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Open" component={First_page} options={{title:'Open'}}/>
+      <Stack.Screen name="register" component={register} options={{title:'register'}}/>
       <Stack.Screen name="Root" component={BottomTabNavigator} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="PredResults" component={PredResultsScreen} options={{ title: 'Predicted Results' }} />
@@ -42,7 +49,10 @@ function RootNavigator() {
       <Stack.Screen name="help" component={help} options={{title:'help'}}/>
       <Stack.Screen name="about" component={about} options={{title:'about'}}/>
       <Stack.Screen name="searchbar" component={searchbar} options={{title:'searchbar'}}/>
+      <Stack.Screen name="searchbar2" component={searchbar2} options={{title:'searchbar2'}}/>
       <Stack.Screen name="accountSetting" component={accountSetting} options={{title:'accountSetting'}}/>
+      <Stack.Screen name="login" component={login} options={{title:'login'}}/>
+      <Stack.Screen name="one" component={TabOneScreen} options={{title:'one'}}/>
     </Stack.Navigator>
   );
 }
