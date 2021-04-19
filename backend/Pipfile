@@ -11,6 +11,12 @@ django = "*"
 djangorestframework = "*"
 django-rest-knox = "*"
 pillow = "*"
+gunicorn = "*"
+tensorflow = "==2.4.0"
+whitenoise = "*"
+django-cors-headers = "*"
+django-heroku = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.6"

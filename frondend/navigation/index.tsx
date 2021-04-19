@@ -12,6 +12,7 @@ import about from '../screens/about';
 import register from '../screens/register';
 import login from '../screens/login';
 import searchbar from '../screens/searchbar';
+import searchbar2 from '../screens/searchbar2';
 import SettingsScreen from '../screens/SettingScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
@@ -48,6 +49,7 @@ function RootNavigator() {
       <Stack.Screen name="help" component={help} options={{title:'help'}}/>
       <Stack.Screen name="about" component={about} options={{title:'about'}}/>
       <Stack.Screen name="searchbar" component={searchbar} options={{title:'searchbar'}}/>
+      <Stack.Screen name="searchbar2" component={searchbar2} options={{title:'searchbar2'}}/>
       <Stack.Screen name="accountSetting" component={accountSetting} options={{title:'accountSetting'}}/>
       <Stack.Screen name="login" component={login} options={{title:'login'}}/>
       <Stack.Screen name="one" component={TabOneScreen} options={{title:'one'}}/>

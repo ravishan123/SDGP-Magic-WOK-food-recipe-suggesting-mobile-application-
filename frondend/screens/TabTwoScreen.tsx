@@ -6,7 +6,7 @@ import { Text, View } from '../components/Themed';
 import { AntDesign } from '@expo/vector-icons';
 import { StackScreenProps } from '@react-navigation/stack';
 
-export default function TabTwoScreen({navigation,}: StackScreenProps<RootStackParamList, 'searchbar'>) {
+export default function TabTwoScreen({navigation,}: StackScreenProps<RootStackParamList, 'searchbar', 'searchbar2'>) {
 
   const image = { uri: "https://img.freepik.com/free-photo/chicken-wings-barbecue-sweetly-sour-sauce-picnic-summer-menu-tasty-food-top-view-flat-lay_2829-6471.jpg?size=626&ext=jpg" };
   const image2 = { uri: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2019/06/cropped-GettyImages-643764514.jpg" };
@@ -30,7 +30,7 @@ export default function TabTwoScreen({navigation,}: StackScreenProps<RootStackPa
       <ImageBackground source={image2} style={styles.image2}>
         <View style={styles.container3}>
           <Text style={styles.text2}>search {'\n'}by {'\n'}ingrdients</Text>
-          <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('searchbar')} >
+          <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('searchbar2')} >
             <AntDesign name="rightcircleo" size={40} color="white" />
           </TouchableOpacity>
         </View>
