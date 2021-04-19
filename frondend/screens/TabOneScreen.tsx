@@ -5,10 +5,14 @@ import { Card,Button, Icon } from 'react-native-elements';
 import HomeCard from '../screens/favorite/HomeCard';
 import { black } from 'react-native-paper/lib/typescript/styles/colors';
 import { AntDesign } from '@expo/vector-icons';
+import navigation from '../navigation';
+import { RootStackParamList } from '../types';
+import { StackScreenProps } from '@react-navigation/stack';
 
 
 
-const App = () =>{ 
+export default function TabOneScreen({navigation,}: StackScreenProps<RootStackParamList, 'searchbar'>) {
+ 
 
 return (
  
@@ -28,7 +32,7 @@ return (
             <Text style={styles.bgtext} >Search by ingredients</Text>
 
             <View style ={{marginLeft: '80%',marginTop : -47}}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=> navigation.navigate('searchbar')}>
               <AntDesign name="rightcircleo" size={50} color="black" />
               </TouchableOpacity>
             </View>
@@ -47,7 +51,7 @@ return (
             <Text style={styles.bgtext2} >Search by dish</Text>
 
             <View style ={{marginLeft: '80%',marginTop : -47}}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=> navigation.navigate('searchbar')}>
               <AntDesign name="rightcircleo" size={50} color="black" />
               </TouchableOpacity>
             </View>
@@ -132,7 +136,7 @@ return (
     
   );
 };
-export default App;
+
 
 
 
