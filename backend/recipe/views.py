@@ -367,3 +367,62 @@ class HomeRecipeArabic(APIView):
 class IngredientSearch(APIView):
     def post(self, request, *args, **kwargs):
         print(request.data)
+
+
+
+class IngredientRecognitionView(APIView):
+    def prepare_image(image_str_tensor):
+        image = tf.image.decode_image(image_str_tensor, channels=3)
+        return image
+
+    def post(self, request, *args, **kwargs):
+        
+        fruits=['Potato Red' ,'Banana Red' ,'Cauliflower', 'Grape White 4' ,'Pear Monster',
+                'Blueberry', 'Hazelnut', 'Tangelo', 'Cherry Wax Yellow', 'Apple Golden 2',
+                'Cherry Wax Red', 'Papaya', 'Melon Piel de Sapo', 'Mandarine', 'Cantaloupe 2',
+                'Apple Red Yellow 2', 'Physalis', 'Cherry 2', 'Tomato 1', 'Pear Red',
+                'Beetroot', 'Pear Kaiser', 'Pineapple', 'Kohlrabi', 'Pepper Green',
+                'Potato Sweet', 'Cherry Rainier', 'Redcurrant', 'Grapefruit Pink',
+                'Pineapple Mini', 'Mulberry', 'Plum 2', 'Maracuja', 'Tamarillo', 'Cherry 1',
+                'Nut Pecan', 'Apricot', 'Nectarine', 'Cocos', 'Banana Lady Finger', 'Limes',
+                'Nectarine Flat', 'Peach', 'Plum 3', 'Tomato 4', 'Pear Forelle', 'Ginger Root',
+                'Apple Red 2', 'Walnut', 'Passion Fruit', 'Salak', 'Grape White 3',
+                'Pepper Red', 'Pear Stone', 'Apple Granny Smith', 'Pomelo Sweetie',
+                'Eggplant', 'Nut Forest', 'Corn Husk', 'Mango', 'Avocado ripe',
+                'Grape White 2', 'Tomato Heart', 'Apple Golden 1', 'Potato White',
+                'Pear Williams', 'Plum', 'Apple Golden 3', 'Apple Braeburn',
+                'Apple Red Delicious', 'Apple Red 1', 'Raspberry', 'Quince', 'Grape White',
+                'Banana', 'Onion White', 'Orange', 'Pitahaya Red', 'Onion Red', 'Pear',
+                'Carambula', 'Granadilla', 'Onion Red Peeled', 'Kiwi', 'Tomato Yellow',
+                'Apple Red 3', 'Guava', 'Tomato 2', 'Tomato Maroon', 'Pepper Yellow',
+                'Potato Red Washed', 'Clementine', 'Cherry Wax Black', 'Lemon', 'Watermelon',
+                'Pear 2', 'Tomato not Ripened', 'Fig', 'Grape Pink', 'Apple Pink Lady',
+                'Peach 2' ,'Tomato 3', 'Pepper Orange', 'Strawberry', 'Physalis with Husk',
+                'Rambutan', 'Avocado', 'Grape Blue', 'Apple Crimson Snow', 'Pomegranate',
+                'Lychee', 'Apple Red Yellow 1', 'Tomato Cherry Red', 'Cucumber Ripe 2',
+                'Strawberry Wedge', 'Kumquats', 'Pear Abate', 'Lemon Meyer', 'Dates', 'Corn',
+                'Chestnut', 'Cactus fruit', 'Pepino', 'Cantaloupe 1', 'Mango Red', 'Kaki',
+                'Mangostan', 'Huckleberry', 'Cucumber Ripe', 'Peach Flat', 'Grapefruit White']
+
+        b64_image = request.data["image_base64"]        
+       
+        b64_image = base64.b64decode(b64_image)
+        img = Image.open(io.BytesIO(b64_image))
+        img = img.resize((224, 224), Image.ANTIALIAS)
+        img = image.img_to_array(img)
+        print("-------- LOADED ---------")
+        img = np.expand_dims(img, axis=0)
+        img /= 255. 
+                             
+        print("IMG ---- ", img)
+        pred = settings.model2.predict(img)
+        index = np.argmax(pred)
+        print(" INDEX ---- ", index)
+        fruits.sort()
+        # pred_value = fruits[index]
+        pred_dish_name = fruits[index]
+        # print("predicted value - ", pred_value)
+        print("predicted dish - ", pred_dish_name)
+        # output = Recipe.objects.filter(recipe_name=pred_dish_name)
+        # serializer = RecipeSerializer(output, many=True)
+        return Response(pred_dish_name)
