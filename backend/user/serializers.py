@@ -1,12 +1,7 @@
 from rest_framework import serializers
-from .models import User  #Account, User
+from .models import User, Favourites  #Account, User
 from django.contrib.auth import authenticate
 
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('email', 'first_name', 'last_name')
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,3 +26,14 @@ class LoginSerializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError("incorrect credentials")
+
+class FavouritesSerializer(serializers.Serializer):
+    class Meta:
+        model = Favourites
+        fields = '__all__'
+
+class UserSerializer(serializers.ModelSerializer):
+    favourites = FavouritesSerializer(many=True)
+    class Meta:
+        model = User
+        fields = ('email', 'first_name', 'last_name', 'favourites')
