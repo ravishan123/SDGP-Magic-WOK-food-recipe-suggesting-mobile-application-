@@ -139,6 +139,9 @@ ingredientModelFile = 'ingredientmodel_trained_class.hdf5'
 ingredient_model_root = os.path.join(STATIC_ROOT, ingredientModelFile)
 model_root = os.path.join(STATIC_ROOT, modelFile)
 model = load_model(model_root, compile=False)
+modelFile2 = 'ingredient_model.hdf5'
+model_root2 = os.path.join(STATIC_ROOT, modelFile)
+model2= load_model(model_root, compile=False)
 #ingredient_model = load_model(ingredient_model_root, compile=False)
 print("------------------------")
 print(BASE_DIR)

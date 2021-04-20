@@ -5,6 +5,7 @@ import { ColorSchemeName } from 'react-native';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import PredResultsScreen from '../screens/components/SubScreens/PredResultsScreen';
+import PredResultsScreen2 from '../screens/components/SubScreens/PredResultsScreen2';
 import SearchResultsScreen from '../screens/components/SubScreens/SearchResultsScreen';
 import help from '../screens/help';
 import accountSetting from '../screens/accountSetting';
@@ -44,6 +45,7 @@ function RootNavigator() {
       <Stack.Screen name="Root" component={BottomTabNavigator} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="PredResults" component={PredResultsScreen} options={{ title: 'Predicted Results' }} />
+      <Stack.Screen name="PredResults2" component={PredResultsScreen2} options={{ title: 'Predicted Results2' }} />
       <Stack.Screen name="SearchResults" component={SearchResultsScreen} options={{ title: 'Search Results' }} />
       <Stack.Screen name="Setting" component={SettingsScreen} options={{title:'setting'}}/>
       <Stack.Screen name="help" component={help} options={{title:'help'}}/>
