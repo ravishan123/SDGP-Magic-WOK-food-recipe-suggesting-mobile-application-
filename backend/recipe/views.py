@@ -363,3 +363,7 @@ class HomeRecipeArabic(APIView):
         )
         serializer = RecipeSerializer(results, many=True)
         return Response(serializer.data)
+
+class IngredientSearch(APIView):
+    def post(self, request, *args, **kwargs):
+        print(request.data)
