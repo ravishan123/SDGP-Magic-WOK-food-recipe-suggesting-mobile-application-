@@ -4,11 +4,35 @@ import * as React from 'react';
 import  { Component } from "react";
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
- import { StackScreenProps } from '@react-navigation/stack';
-  import { RootStackParamList } from '../types';
+import { StackScreenProps } from '@react-navigation/stack';
+import { RootStackParamList } from '../types';
+import axios from 'axios';
+
 
 export default function register ({navigation,} : StackScreenProps<RootStackParamList, 'Root'>){
   const image = { uri: "https://media.istockphoto.com/vectors/preparations-and-mushroom-dishes-on-a-white-background-vector-id1264636364?s=612x612" };
+
+  const initialState = {first_name:'', last_name:'', email:'', password:'', confirmPassword:''}
+  const [inputs, setInputs] = React.useState(initialState)
+
+  const handleChange = (text, id) => {
+    setInputs({...inputs, [id]: text})
+  }
+
+  const registerUser = () =>  {
+    // navigation.navigate('Root')
+    console.log(`inputs`, inputs)
+    // axios.post('http://10.0.2.2:8000/api/auth/register', inputs).then(res =>{
+    axios.post('http://3.128.43.16/api/auth/register', inputs).then(res =>{
+      console.log(`res`, res)
+      if(res.status === 200){
+        navigation.navigate('Root')
+      }
+    }).catch(err => {
+      console.log(`err`, err.message)
+    })
+  }
+
     return (
       
       <View >
@@ -23,6 +47,8 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
         <TextInput
           style={styles.input}
           placeholder='First Name :'
+          id = "first_name"
+          onChangeText={(text) => handleChange(text, "first_name")}
           autoCapitalize="none"
           placeholderTextColor='#a9a9a9'
           
@@ -31,6 +57,8 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
         <TextInput
           style={styles.input} 
           placeholder='Last Name :'
+          id = "last_name"
+          onChangeText={(text) => handleChange(text, "last_name")}
           autoCapitalize="none"
           placeholderTextColor='#a9a9a9'
           
@@ -38,14 +66,26 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
 
         <TextInput
           style={styles.input}
-          placeholder='Username :'
+          placeholder='Email :'
+          id = "email"
+          onChangeText={(text) => handleChange(text, "email")}
           autoCapitalize="none"
           placeholderTextColor='#a9a9a9'
           
         />
+
+        {/* <TextInput
+          style={styles.input}
+          placeholder='Username :'
+          autoCapitalize="none"
+          placeholderTextColor='#a9a9a9'
+          
+        /> */}
         <TextInput
           style={styles.input}
           placeholder='Password :'
+          id = "password"
+          onChangeText={(text) => handleChange(text, "password")}
           secureTextEntry={true}
           autoCapitalize="none"
           placeholderTextColor='#a9a9a9'
@@ -54,26 +94,21 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
          <TextInput
           style={styles.input}
           placeholder='Confirm Password :'
+          id = "confirmPassword"
+          onChangeText={(text) => handleChange(text, "confirmPassword")}
           secureTextEntry={true}
           autoCapitalize="none"
           placeholderTextColor='#a9a9a9'
          
         />
 
-        <TextInput
-          style={styles.input}
-          placeholder='Email :'
-          autoCapitalize="none"
-          placeholderTextColor='#a9a9a9'
-          
-        />
-        <TextInput
+        {/* <TextInput
           style={styles.input}
           placeholder='Phone Number :'
           autoCapitalize="none"
           placeholderTextColor='#a9a9a9'
           
-        />
+        /> */}
         </View>
         <View style={{marginTop:30,padding:0,borderRadius:50,marginLeft:20,marginRight:20}}>
           
@@ -83,7 +118,7 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
           color={'#fbb124'}
       
         /> */}
-        <TouchableOpacity  onPress={()=> navigation.navigate('Root')}>
+        <TouchableOpacity  onPress={registerUser}>
         <Text style={{padding:12,fontWeight:'bold',fontSize:25,marginTop:'5%',color:'white',backgroundColor:'#fbb124',textAlign:'center',borderRadius:50}}>Register</Text>
 
         </TouchableOpacity>
