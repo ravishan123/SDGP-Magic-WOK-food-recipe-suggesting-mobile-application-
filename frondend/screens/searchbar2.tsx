@@ -40,7 +40,7 @@ export default class searchbar2 extends Component {
    
      let form_data = new FormData();
      form_data.append('image_base64', data.base64);
-    //  this.props.navigation.navigate('PredResults2', form_data)
+     this.props.navigation.navigate('PredResults2', form_data)
 
    
     }else{
@@ -74,7 +74,7 @@ export default class searchbar2 extends Component {
   
           form_data.append('image_base64', data.base64);
   
-    //  this.props.navigation.navigate('PredResults2', form_data)
+     this.props.navigation.navigate('PredResults2', form_data)
     
   
     }else{
