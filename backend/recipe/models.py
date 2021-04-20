@@ -27,3 +27,21 @@ class Recipe(models.Model):
 
 #         new_recipe = Recipe(image=image, recipe_name=recipe_name, total_time=total_time, cuisine=cuisine, ingredients=ingredients, cooking_method=cooking_method, serving=serving)
 #         new_recipe.save()
+
+
+# with open('C:/Users/Venuli Nanayakkara/Desktop/SDGP/GENEX/backend/recipe/allRecipeCollection.csv', "r", encoding="utf8") as csvfile:
+#     reader = csv.DictReader(csvfile)
+#     for row in reader:
+#         # The header row values become your keys
+#         # image,recipe_name,total_time,cuisine,ingredients,cooking-method,servings
+#         image = row['\ufeffimage']
+#         recipe_name = row['recipe_name']
+#         total_time = row['total_time']
+#         cuisine = row['cuisine']
+#         ingredients = row['ingredients']
+#         cooking_method = row['cooking-method']
+#         serving = row['servings']
+#         # etc....
+
+#         new_recipe = Recipe(image=image, recipe_name=recipe_name, total_time=total_time, cuisine=cuisine, ingredients=ingredients, cooking_method=cooking_method, serving=serving)
+#         new_recipe.save()
