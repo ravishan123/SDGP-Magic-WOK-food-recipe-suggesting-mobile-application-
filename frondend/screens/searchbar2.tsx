@@ -1,16 +1,17 @@
 import { StyleSheet,ImageBackground, TouchableHighlight, ActivityIndicator, TextInput } from 'react-native';
 import {Container,Header,Icon,Input,Item,Text,View} from 'native-base';
 import { SearchBar } from 'react-native-elements';
-import React,{ constructor } from 'react';
+import React,{  } from 'react';
 import { Component } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Button, Image, Platform ,Modal,Alert} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import *as Permissions from 'expo-permissions'
 import { AntDesign } from '@expo/vector-icons';
+import Navigation from '../navigation';
 
 
-export default class searchbar2 extends Component {
+export default class searchbar2 extends Component{
 
   state = {
     predictedValues: '',
@@ -40,7 +41,7 @@ export default class searchbar2 extends Component {
    
      let form_data = new FormData();
      form_data.append('image_base64', data.base64);
-     this.props.navigation.navigate('PredResults2', form_data)
+    //  this.props.navigation.navigate('PredResults2', form_data)
 
    
     }else{
@@ -74,7 +75,7 @@ export default class searchbar2 extends Component {
   
           form_data.append('image_base64', data.base64);
   
-     this.props.navigation.navigate('PredResults2', form_data)
+    //  this.props.navigation.navigate('PredResults2', form_data)
     
   
     }else{
@@ -121,13 +122,21 @@ export default class searchbar2 extends Component {
     // this.props.navigation.navigate('ingredientSearch')
   
   }
-
+ 
+  button = () => {
+    this.props.navigation.navigate('Root')
+  }
   render(){
 
 
   
     return (
       <Container style={styles.container}>
+        <View>
+         <TouchableOpacity onPress={this.button}>
+          <Image source={require('../components/Images/k1.png')} style={{width:30, height:30, marginLeft:'5%',marginTop:10}}></Image> 
+          </TouchableOpacity>
+          </View>
           <View style={styles.redirect}>
             <TouchableOpacity 
             style={styles.redirectButton}
