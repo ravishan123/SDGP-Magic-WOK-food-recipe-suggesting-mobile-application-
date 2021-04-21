@@ -10,30 +10,32 @@ import { StackScreenProps } from '@react-navigation/stack';
 import axios from 'axios'
 import { Avatar, Card, Title, Paragraph } from 'react-native-paper';
 import { Text, View } from '../components/Themed';
+import searchbar2 from './searchbar2';
 
 
 
-export default function TabOneScreen({navigation,}: StackScreenProps<RootStackParamList, 'searchbar'>) {
+export default function TabOneScreen({navigation,}: StackScreenProps<RootStackParamList, 'searchbar', 'searchbar2'>) {
 
 
-  // France
+    // American
 
-  const [searchedValues, setSearchedValues] = React.useState('');
-  const [isLoading, setIsLoading] = React.useState(false);
-
-  React.useEffect(() => {
-    setIsLoading(true)
-    axios.get('http://10.0.2.2:8000/api/home_recipe_france', {
-
-    }).then(res => {
-      console.log('res -- ', res)
-      setSearchedValues(res.data)
-      setIsLoading(false)
-    }).catch(err => {
-      console.log(err)
-      setIsLoading(false)
-     })
-  }, []);
+    const [searchedValuesAmerican, setSearchedValuesAmerican] = React.useState('');
+    const [isLoadingAmerican, setIsLoadingAmerican] = React.useState(false);
+  
+    React.useEffect(() => {
+      setIsLoadingAmerican(true)
+      axios.get('http://10.0.2.2:8000/api/home_recipe_american', {
+  
+      }).then(res => {
+        console.log('res -- ', res)
+        setSearchedValuesAmerican(res.data)
+        setIsLoadingAmerican(false)
+      }).catch(err => {
+        console.log(err)
+        setIsLoadingAmerican(false)
+       })
+    }, []);
+  
 
   // Mexican
 
@@ -150,22 +152,23 @@ export default function TabOneScreen({navigation,}: StackScreenProps<RootStackPa
      })
   }, []);
 
-  // American
 
-  const [searchedValuesAmerican, setSearchedValuesAmerican] = React.useState('');
-  const [isLoadingAmerican, setIsLoadingAmerican] = React.useState(false);
+  // France
+
+  const [searchedValues, setSearchedValues] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
-    setIsLoadingAmerican(true)
-    axios.get('http://10.0.2.2:8000/api/home_recipe_american', {
+    setIsLoading(true)
+    axios.get('http://10.0.2.2:8000/api/home_recipe_france', {
 
     }).then(res => {
       console.log('res -- ', res)
-      setSearchedValuesAmerican(res.data)
-      setIsLoadingAmerican(false)
+      setSearchedValues(res.data)
+      setIsLoading(false)
     }).catch(err => {
       console.log(err)
-      setIsLoadingAmerican(false)
+      setIsLoading(false)
      })
   }, []);
 
@@ -193,7 +196,7 @@ export default function TabOneScreen({navigation,}: StackScreenProps<RootStackPa
                       <Text style={styles.bgtext} >Search by ingredients</Text>
           
                       <View style ={{marginLeft: '80%',marginTop : -47}}>
-                        <TouchableOpacity onPress={()=> navigation.navigate('searchbar')}>
+                        <TouchableOpacity onPress={()=> navigation.navigate('searchbar2')}>
                         <AntDesign name="rightcircleo" size={50} color="black" />
                         </TouchableOpacity>
                       </View>
@@ -222,13 +225,12 @@ export default function TabOneScreen({navigation,}: StackScreenProps<RootStackPa
                 </View> 
           </ScrollView>
 
-
-    {/* France */}
+    {/* American */}
 
     <View style={styles.container}>
-      <Text style={styles.innerText}>     France</Text> 
+      <Text style={styles.innerText}>     American</Text> 
       <ScrollView horizontal={true}>
-        {!!searchedValues && searchedValues.map((item, key) => {
+        {!!searchedValuesAmerican && searchedValuesAmerican.map((item, key) => {
           return(
             <SafeAreaView style={styles.containerCard}>
             <View style={styles.containerCard}>
@@ -251,6 +253,7 @@ export default function TabOneScreen({navigation,}: StackScreenProps<RootStackPa
       </ScrollView>
     </View>
 
+   
     {/* Mexican */}
 
     <View style={styles.container}>
@@ -419,12 +422,13 @@ export default function TabOneScreen({navigation,}: StackScreenProps<RootStackPa
       </ScrollView>
     </View>
 
-    {/* American */}
 
-    <View style={styles.container}>
-      <Text style={styles.innerText}>     American</Text> 
+     {/* France */}
+
+     <View style={styles.container}>
+      <Text style={styles.innerText}>     France</Text> 
       <ScrollView horizontal={true}>
-        {!!searchedValuesAmerican && searchedValuesAmerican.map((item, key) => {
+        {!!searchedValues && searchedValues.map((item, key) => {
           return(
             <SafeAreaView style={styles.containerCard}>
             <View style={styles.containerCard}>
@@ -446,6 +450,9 @@ export default function TabOneScreen({navigation,}: StackScreenProps<RootStackPa
         
       </ScrollView>
     </View>
+
+
+    
 
 
 
