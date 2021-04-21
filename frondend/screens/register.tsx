@@ -1,4 +1,4 @@
-import {Button,TextInput,StyleSheet,ImageBackground,Image} from 'react-native'
+import {Button,TextInput,StyleSheet,ImageBackground} from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import * as React from 'react';
 import  { Component } from "react";
@@ -7,7 +7,7 @@ import { Text, View } from '../components/Themed';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../types';
 import axios from 'axios';
-import SyncStorage from 'sync-storage';
+
 
 export default function register ({navigation,} : StackScreenProps<RootStackParamList, 'Root'>){
   const image = { uri: "https://media.istockphoto.com/vectors/preparations-and-mushroom-dishes-on-a-white-background-vector-id1264636364?s=612x612" };
@@ -22,12 +22,11 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
   const registerUser = () =>  {
     // navigation.navigate('Root')
     console.log(`inputs`, inputs)
-    axios.post('http://10.0.2.2:8000/api/auth/register', inputs).then(res =>{
-    // axios.post('http://3.128.43.16/api/auth/register', inputs).then(res =>{
+    // axios.post('http://10.0.2.2:8000/api/auth/register', inputs).then(res =>{
+    axios.post('http://3.128.43.16/api/auth/register', inputs).then(res =>{
       console.log(`res`, res)
       if(res.status === 200){
         navigation.navigate('Root')
-        SyncStorage.set('login_details', res.data);
       }
     }).catch(err => {
       console.log(`err`, err.message)
@@ -39,11 +38,6 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
       <View >
         
         <ScrollView>
-        <View>
-         <TouchableOpacity onPress={()=> navigation.navigate('Open')}>
-          <Image source={require('../components/Images/k1.png')} style={{width:30, height:30, marginLeft:'5%',marginTop:30}}></Image> 
-          </TouchableOpacity>
-          </View>
         <ImageBackground source ={require('../components/Images/i4.jpg')} style={styles.image}>
         <View style={{marginLeft:40,marginRight:40,marginTop:120,marginBottom:120,backgroundColor:'white',borderRadius:30,borderWidth:0,}}>
           <View>
