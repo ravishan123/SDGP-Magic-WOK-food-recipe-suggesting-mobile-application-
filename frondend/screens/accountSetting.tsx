@@ -6,11 +6,23 @@ import { RootStackParamList } from '../types';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { StackScreenProps } from '@react-navigation/stack';
-
+import axios from 'axios';
+import SyncStorage from 'sync-storage';
 
 
 export default function accountSetting({navigation,}: StackScreenProps<RootStackParamList, 'Setting'>){
-    const createTextAlert = () =>
+  const initialState = {first_name:'', last_name:'', email:''}
+  const [inputs, setInputs] = React.useState(initialState)
+
+  const handleChange = (text, id) => {
+    setInputs({...inputs, [id]: text})
+  }
+  
+    const createTextAlert = () => {
+      const login_details = SyncStorage.get('login_details');
+      console.log(login_details);
+      navigation.navigate('Root')
+
       Alert.alert(
         "Alert",
         "Submit All Information",
@@ -24,8 +36,17 @@ export default function accountSetting({navigation,}: StackScreenProps<RootStack
         ],
         { cancelable: false }
       );
+      
+    }
   
+    
   
+    const registerUser = () =>  {
+      // navigation.navigate('Root')
+     
+    }
+  
+
   return (
     <View style={{backgroundColor:'white'}}>
       <ScrollView>
@@ -51,6 +72,8 @@ export default function accountSetting({navigation,}: StackScreenProps<RootStack
           placeholder='Enter First Name :'
           autoCapitalize="none"
           placeholderTextColor='#a9a9a9'
+           id = "first_name"
+           onChangeText={(text) => handleChange(text, "first_name")}
           
         />
 
@@ -59,32 +82,19 @@ export default function accountSetting({navigation,}: StackScreenProps<RootStack
           placeholder='Enter Last Name :'
           autoCapitalize="none"
           placeholderTextColor='#a9a9a9'
-          
+           id = "last_name"
+           onChangeText={(text) => handleChange(text, "last_name")}
         />
         <TextInput
           style={styles.input}
           placeholder='Email :'
           autoCapitalize="none"
           placeholderTextColor='#a9a9a9'
+           id = "email"
+           onChangeText={(text) => handleChange(text, "email")}
           
         />
-        <TextInput
-          style={styles.input}
-          placeholder='Current Password :'
-          secureTextEntry={true}
-          autoCapitalize="none"
-          placeholderTextColor='#a9a9a9'
-         
-        />
-         <TextInput
-          style={styles.input}
-          placeholder='New Password :'
-          secureTextEntry={true}
-          autoCapitalize="none"
-          placeholderTextColor='#a9a9a9'
-         
-        />
-          </View>
+     </View>
 
       <View style={{marginTop:0}}>
       <View style={{marginTop:50,padding:10,borderRadius:50,backgroundColor:'#fbb124',marginLeft:20,marginRight:20,borderWidth:2,borderColor:"#fbb124"}}>

@@ -244,7 +244,7 @@
 import { StyleSheet,ImageBackground, TouchableHighlight, ActivityIndicator, TextInput } from 'react-native';
 import {Container,Header,Icon,Input,Item,Text,View} from 'native-base';
 import { SearchBar } from 'react-native-elements';
-import React,{ constructor } from 'react';
+import React,{} from 'react';
 import { Component } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Button, Image, Platform ,Modal,Alert} from 'react-native';
@@ -365,12 +365,21 @@ export default class searchbar extends Component {
     })
   }
 
+  button = () => {
+    this.props.navigation.navigate('Root')
+  }
+
   render(){
 
 
   
     return (
       <Container style={styles.container}>
+        <View>
+         <TouchableOpacity onPress={this.button}>
+          <Image source={require('../components/Images/k1.png')} style={{width:30, height:30, marginLeft:'5%',marginTop:15,marginBottom:10}}></Image> 
+          </TouchableOpacity>
+          </View>
           <SearchBar
               placeholder="Type Here..."
               onChangeText={this.handleChange}

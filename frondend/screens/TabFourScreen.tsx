@@ -12,15 +12,25 @@ import TabTwoScreen from './search';
 import { Ionicons } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
 import { LinearGradient } from 'expo-linear-gradient';
-
+import SyncStorage from 'sync-storage';
 
 
 export default function TabFourScreen({navigation,}: StackScreenProps<RootStackParamList, 'Setting'>,props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
 
   
     const [image, setImage] = useState(null);
+    const [accoutData, setAccountData] = useState('')
+    const [registerData,setData] = useState('')
   
     useEffect(() => {
+      const login_details = SyncStorage.get('login_details');
+      console.log('login_details :>> ', login_details);
+      setAccountData(login_details);
+
+      const register_details = SyncStorage.get('register_details');
+      console.log('register_details :>> ', register_details);
+      setData(register_details);
+
       (async () => {
         if (Platform.OS !== 'web') {
           const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -95,19 +105,17 @@ export default function TabFourScreen({navigation,}: StackScreenProps<RootStackP
             <View style={{marginTop:5 , backgroundColor:'white'}}>  
             <Text style={{marginTop:25, color:'#fbb124',marginBottom:5,borderBottomColor:'#fbb124',
     borderBottomWidth:2}}></Text>
-              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:-10,color:'#a9a9a9'}}>User Name</Text>
+            <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:-10,color:'#a9a9a9'}}>First Name : {accoutData && accoutData.user.first_name}{registerData && registerData.user.first_name}</Text>
               <Text style={{marginTop:-10, color:'gray',marginBottom:5,borderBottomColor:'#fbb124',
     borderBottomWidth:2}}></Text>
-              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:-10 ,color:'#a9a9a9'}}>Email</Text>
+              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:-10 ,color:'#a9a9a9'}}>Last Name : {accoutData && accoutData.user.last_name}</Text>
               <Text style={{marginTop:-10, color:'#fbb124',marginBottom:5,borderBottomColor:'#fbb124',
     borderBottomWidth:2}}></Text>
-            {/* <View style={{marginTop:50}}>
-            <Button title="Edit Profile" onPress={pickImage} color='#fbb124'/>
-            </View> */}
-              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:0,color:'#a9a9a9'}}>Preferences</Text>
+            
+              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:0,color:'#a9a9a9'}}>Email : {accoutData && accoutData.user.email}</Text>
               <Text style={{marginTop:-10, color:'gray',marginBottom:5,borderBottomColor:'#fbb124',
     borderBottomWidth:2}}></Text>
-              <Text style={{padding:10, fontWeight:'bold',fontSize:5,marginBottom:"50%",color:'black'}}></Text>
+              <Text style={{padding:10, fontWeight:'bold',fontSize:5,marginBottom:"10%",color:'black'}}></Text>
 
               </View>
               
