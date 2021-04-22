@@ -4,7 +4,7 @@ from rest_framework import generics
 from .serializers import RecipeSerializer
 from rest_framework.views import APIView
 import backend.settings as settings
-from .models import Recipe
+from .models import Recipe  
 from rest_framework.response import Response
 
 import tensorflow as tf
@@ -252,7 +252,7 @@ class ImageRecognitionView(APIView):
         # image = tf.image.decode_jpeg(content, channels=3)
         # image = tf.cast(image, tf.float32) / 255.0
         # image = tf.image.decode_jpeg(tf.io.decode_base64(base64.urlsafe_b64encode(b64_image.encode())), channels=3)
-
+        
         # b64_image = tf.io.decode_base64(b64_image)  # outputs  --  Invalid character found in base64
         b64_image = base64.b64decode(b64_image)
         img = Image.open(io.BytesIO(b64_image))
@@ -261,15 +261,15 @@ class ImageRecognitionView(APIView):
         img = image.img_to_array(img)
         print("-------- LOADED ---------")
         img = np.expand_dims(img, axis=0)
-        img /= 255.
+        img /= 255. 
         # print(b64_image)
         # image = tf.image.decode_jpeg(b64_image, channels=3)
-
+        
         # img = tf.image.resize_images(image, [150, 150])
         # img = image.load_img(img, target_size=(249, 249))
-        # img = image.img_to_array(img)
-        # img = np.expand_dims(img, axis=0)
-        # img /= 255.
+        # img = image.img_to_array(img)                    
+        # img = np.expand_dims(img, axis=0)         
+        # img /= 255.                                      
         print("IMG ---- ", img)
         pred = settings.model.predict(img)
         index = np.argmax(pred)
@@ -283,8 +283,8 @@ class ImageRecognitionView(APIView):
         output = Recipe.objects.filter(recipe_name=pred_dish_name)
         serializer = RecipeSerializer(output, many=True)
         return Response(serializer.data)
-
-class RecipeSearchByIngredient(APIView):
+ 
+class RecipeSearch(APIView):
     def post(self, request, *args, **kwargs):
         search_key = request.data['search_key']
         print(search_key)
@@ -297,6 +297,115 @@ class RecipeSearchByIngredient(APIView):
         print(results)
         serializer = RecipeSerializer(results, many=True)
         return Response(serializer.data)
+
+import operator
+from functools import reduce
+
+class RecipeSearchByIngredient(APIView):
+    def post(self, request, *args, **kwargs):
+        print(request.data)
+        search_key = request.data['search_keys']
+        print(search_key)
+        print(type(search_key))
+        results = []
+        predicates = []
+        # for i in search_key:
+        #     predicates.append(Q(ingredients__contains=i))
+            # items = Recipe.objects.filter(Q(ingredients__icontains=i))
+            # itemss = Recipe.objects.filter(reduce())
+            # results.append(items)
+        # results = Recipe.objects.filter(reduce(operator.or_, predicates))
+        # print(results)
+        # print(len(results))
+        # filterList = ['P', 'T', 'R']
+        query = Q()
+        for item in search_key:
+            query = query | Q(ingredients__icontains=item)
+        results = Recipe.objects.filter(query)
+        print(results)
+        print(len(results))
+        # results = Recipe.objects.filter(
+        #         Q(cooking_method__icontains=search_key) |
+        #         Q(cuisine__icontains=search_key) |
+        #         Q(ingredients__icontains=search_key) |
+        #         Q(recipe_name__icontains=search_key)
+        #     )
+        # print(results)
+        serializer = RecipeSerializer(results, many=True)
+        return Response(serializer.data)
+
+
+class IngredientImageRecognitionView(APIView):
+    # model = load_model('best_model_101class.hdf5', compile = False)
+    def prepare_image(image_str_tensor):
+        image = tf.image.decode_image(image_str_tensor, channels=3)
+        # image = tf.image.resize_images(image, [150, 150])
+        return image
+
+    def post(self, request, *args, **kwargs):
+        b64_image = request.data["image_base64"]
+    
+        b64_image = base64.b64decode(b64_image)
+        img = Image.open(io.BytesIO(b64_image))
+        img = img.resize((224, 224), Image.ANTIALIAS)
+
+        img = image.img_to_array(img)
+        print("-------- LOADED ---------")
+        img = np.expand_dims(img, axis=0)
+        img /= 255. 
+
+        fruits = ['bell pepper', 'orange', 'spinach', 'eggplant', 'jalepeno', 'apple', 'peas', 'cucumber', 'corn', 'ginger', 'pineapple', 'lettuce', 'lemon', 'sweetpotato', 'beetroot', 'cabbage', 'garlic', 'cauliflower', 'kiwi', 'grapes', 'sweetcorn', 'chilli pepper', 'soy beans', 'pear', 'watermelon', 'turnip', 'onion', 'potato', 'paprika', 'mango', 'tomato', 'capsicum', 'raddish', 'banana', 'pomegranate', 'carrot']
+        labels = {0: 'Apple Braeburn', 1: 'Apple Crimson Snow', 2: 'Apple Golden 1', 3: 'Apple Golden 2', 4: 'Apple Golden 3', 5: 'Apple Granny Smith', 6: 'Apple Pink Lady', 7: 'Apple Red 1', 8: 'Apple Red 2', 9: 'Apple Red 3', 10: 'Apple Red Delicious', 11: 'Apple Red Yellow 1', 12: 'Apple Red Yellow 2', 13: 'Apricot', 14: 'Avocado', 15: 'Avocado ripe', 16: 'Banana', 17: 'Banana Lady Finger', 18: 'Banana Red', 19: 'Beetroot', 20: 'Blueberry', 21: 'Cactus fruit', 22: 'Cantaloupe 1', 23: 'Cantaloupe 2', 24: 'Carambula', 25: 'Cauliflower', 26: 'Cherry 1', 27: 'Cherry 2', 28: 'Cherry Rainier', 29: 'Cherry Wax Black', 30: 'Cherry Wax Red', 31: 'Cherry Wax Yellow', 32: 'Chestnut', 33: 'Clementine', 34: 'Cocos', 35: 'Corn', 36: 'Corn Husk', 37: 'Cucumber Ripe', 38: 'Cucumber Ripe 2', 39: 'Dates', 40: 'Eggplant', 41: 'Fig', 42: 'Ginger Root', 43: 'Granadilla', 44: 'Grape Blue', 45: 'Grape Pink', 46: 'Grape White', 47: 'Grape White 2', 48: 'Grape White 3', 49: 'Grape White 4', 50: 'Grapefruit Pink', 51: 'Grapefruit White', 52: 'Guava', 53: 'Hazelnut', 54: 'Huckleberry', 55: 'Kaki', 56: 'Kiwi', 57: 'Kohlrabi', 58: 'Kumquats', 59: 'Lemon', 60: 'Lemon Meyer', 61: 'Limes', 62: 'Lychee', 63: 'Mandarine', 64: 'Mango', 65: 'Mango Red', 66: 'Mangostan', 67: 'Maracuja', 68: 'Melon Piel de Sapo', 69: 'Mulberry', 70: 'Nectarine', 71: 'Nectarine Flat', 72: 'Nut Forest', 73: 'Nut Pecan', 74: 'Onion Red', 75: 'Onion Red Peeled', 76: 'Onion White', 77: 'Orange', 78: 'Papaya', 79: 'Passion Fruit', 80: 'Peach', 81: 'Peach 2', 82: 'Peach Flat', 83: 'Pear', 84: 'Pear 2', 85: 'Pear Abate', 86: 'Pear Forelle', 87: 'Pear Kaiser', 88: 'Pear Monster', 89: 'Pear Red', 90: 'Pear Stone', 91: 'Pear Williams', 92: 'Pepino', 93: 'Pepper Green', 94: 'Pepper Orange', 95: 'Pepper Red', 96: 'Pepper Yellow', 97: 'Physalis', 98: 'Physalis with Husk', 99: 'Pineapple', 100: 'Pineapple Mini', 101: 'Pitahaya Red', 102: 'Plum', 103: 'Plum 2', 104: 'Plum 3', 105: 'Pomegranate', 106: 'Pomelo Sweetie', 107: 'Potato Red', 108: 'Potato Red Washed', 109: 'Potato Sweet', 110: 'Potato White', 111: 'Quince', 112: 'Rambutan', 113: 'Raspberry', 114: 'Redcurrant', 115: 'Salak', 116: 'Strawberry', 117: 'Strawberry Wedge', 118: 'Tamarillo', 119: 'Tangelo', 120: 'Tomato 1', 121: 'Tomato 2', 122: 'Tomato 3', 123: 'Tomato 4', 124: 'Tomato Cherry Red', 125: 'Tomato Heart', 126: 'Tomato Maroon', 127: 'Tomato Yellow', 128: 'Tomato not Ripened', 129: 'Walnut', 130: 'Watermelon'}                 
+        print("IMG ---- ", img)
+        # pred = settings.ingredient_model.predict(img)
+        # index = np.argmax(pred)
+        # print(" INDEX ---- ", index)
+        # fruits.sort()
+        # fruits.sort()
+        # pred_value = fruits[index]
+        # pred_dish_name = fruits[index]
+
+        # Predict the label of the test_images
+        pred = settings.ingredient_model.predict(img)
+        pred = np.argmax(pred,axis=1)
+        # Map the label
+        pred = [labels[k] for k in pred]
+        print(pred)
+
+        # print("predicted value - ", pred_value)
+        # print("predicted dish - ", pred_dish_name)
+        # output = Recipe.objects.filter(recipe_name=pred_dish_name)
+        # serializer = RecipeSerializer(output, many=True)
+        return Response({"prediction":pred[0]})
+
+class HomeRecipes(APIView):
+    def get(self, request, *args, **kwargs):
+        # results = Recipe.objects.filter(
+        #     Q(cuisine__icontains = 'France') | Q(cuisine__icontains = 'Mexican') |
+        #     Q(cuisine__icontains = 'Asian') | Q(cuisine__icontains = 'Chinese') | Q(cuisine__icontains = 'Italy') | 
+        #     Q(cuisine__icontains = 'Italian') | Q(cuisine__icontains = 'American') | Q(cuisine__icontains = 'Japanese') |
+        #     Q(cuisine__icontains = 'Japan') | Q(cuisine__icontains = 'Arabic')
+        # )
+        france_results = Recipe.objects.filter(Q(cuisine__icontains = 'France'))
+        mexican_results = Recipe.objects.filter(Q(cuisine__icontains = 'Mexican'))
+        asian_results = Recipe.objects.filter(Q(cuisine__icontains = 'Asian'))
+        chinese_results = Recipe.objects.filter(Q(cuisine__icontains = 'Chinese'))
+        italy_results = Recipe.objects.filter(Q(cuisine__icontains = 'Italy') | Q(cuisine__icontains = 'Italian'))
+        american_results = Recipe.objects.filter(Q(cuisine__icontains = 'American'))
+        arabic_results = Recipe.objects.filter(Q(cuisine__icontains = 'Arabic'))
+        japan_results = Recipe.objects.filter(Q(cuisine__icontains = 'Japanese') | Q(cuisine__icontains = 'Japan'))
+
+        france_serializer = RecipeSerializer(france_results, many=True)
+        mexican_serializer = RecipeSerializer(mexican_results, many=True)
+        asian_serializer = RecipeSerializer(asian_results, many=True)
+        chinese_serializer = RecipeSerializer(chinese_results, many=True)
+        italy_serializer = RecipeSerializer(italy_results, many=True)
+        american_serializer = RecipeSerializer(american_results, many=True)
+        arabic_serializer = RecipeSerializer(arabic_results, many=True)
+        japan_serializer = RecipeSerializer(japan_results, many=True)
+    
+        return Response({"france": france_serializer.data, "mexican": mexican_serializer.data, "asian": asian_serializer.data, "chinese": chinese_serializer.data, "italy": italy_serializer.data, "american": american_serializer.data, "arabic": arabic_serializer.data, "japan": japan_serializer.data})
+
 
 class HomeRecipeFrance(APIView):
     def get(self, request, *args, **kwargs):
@@ -363,66 +472,3 @@ class HomeRecipeArabic(APIView):
         )
         serializer = RecipeSerializer(results, many=True)
         return Response(serializer.data)
-
-class IngredientSearch(APIView):
-    def post(self, request, *args, **kwargs):
-        print(request.data)
-
-
-
-class IngredientRecognitionView(APIView):
-    def prepare_image(image_str_tensor):
-        image = tf.image.decode_image(image_str_tensor, channels=3)
-        return image
-
-    def post(self, request, *args, **kwargs):
-        
-        fruits=['Potato Red' ,'Banana Red' ,'Cauliflower', 'Grape White 4' ,'Pear Monster',
-                'Blueberry', 'Hazelnut', 'Tangelo', 'Cherry Wax Yellow', 'Apple Golden 2',
-                'Cherry Wax Red', 'Papaya', 'Melon Piel de Sapo', 'Mandarine', 'Cantaloupe 2',
-                'Apple Red Yellow 2', 'Physalis', 'Cherry 2', 'Tomato 1', 'Pear Red',
-                'Beetroot', 'Pear Kaiser', 'Pineapple', 'Kohlrabi', 'Pepper Green',
-                'Potato Sweet', 'Cherry Rainier', 'Redcurrant', 'Grapefruit Pink',
-                'Pineapple Mini', 'Mulberry', 'Plum 2', 'Maracuja', 'Tamarillo', 'Cherry 1',
-                'Nut Pecan', 'Apricot', 'Nectarine', 'Cocos', 'Banana Lady Finger', 'Limes',
-                'Nectarine Flat', 'Peach', 'Plum 3', 'Tomato 4', 'Pear Forelle', 'Ginger Root',
-                'Apple Red 2', 'Walnut', 'Passion Fruit', 'Salak', 'Grape White 3',
-                'Pepper Red', 'Pear Stone', 'Apple Granny Smith', 'Pomelo Sweetie',
-                'Eggplant', 'Nut Forest', 'Corn Husk', 'Mango', 'Avocado ripe',
-                'Grape White 2', 'Tomato Heart', 'Apple Golden 1', 'Potato White',
-                'Pear Williams', 'Plum', 'Apple Golden 3', 'Apple Braeburn',
-                'Apple Red Delicious', 'Apple Red 1', 'Raspberry', 'Quince', 'Grape White',
-                'Banana', 'Onion White', 'Orange', 'Pitahaya Red', 'Onion Red', 'Pear',
-                'Carambula', 'Granadilla', 'Onion Red Peeled', 'Kiwi', 'Tomato Yellow',
-                'Apple Red 3', 'Guava', 'Tomato 2', 'Tomato Maroon', 'Pepper Yellow',
-                'Potato Red Washed', 'Clementine', 'Cherry Wax Black', 'Lemon', 'Watermelon',
-                'Pear 2', 'Tomato not Ripened', 'Fig', 'Grape Pink', 'Apple Pink Lady',
-                'Peach 2' ,'Tomato 3', 'Pepper Orange', 'Strawberry', 'Physalis with Husk',
-                'Rambutan', 'Avocado', 'Grape Blue', 'Apple Crimson Snow', 'Pomegranate',
-                'Lychee', 'Apple Red Yellow 1', 'Tomato Cherry Red', 'Cucumber Ripe 2',
-                'Strawberry Wedge', 'Kumquats', 'Pear Abate', 'Lemon Meyer', 'Dates', 'Corn',
-                'Chestnut', 'Cactus fruit', 'Pepino', 'Cantaloupe 1', 'Mango Red', 'Kaki',
-                'Mangostan', 'Huckleberry', 'Cucumber Ripe', 'Peach Flat', 'Grapefruit White']
-
-        b64_image = request.data["image_base64"]        
-       
-        b64_image = base64.b64decode(b64_image)
-        img = Image.open(io.BytesIO(b64_image))
-        img = img.resize((224, 224), Image.ANTIALIAS)
-        img = image.img_to_array(img)
-        print("-------- LOADED ---------")
-        img = np.expand_dims(img, axis=0)
-        img /= 255. 
-                             
-        print("IMG ---- ", img)
-        pred = settings.model2.predict(img)
-        index = np.argmax(pred)
-        print(" INDEX ---- ", index)
-        fruits.sort()
-        # pred_value = fruits[index]
-        pred_dish_name = fruits[index]
-        # print("predicted value - ", pred_value)
-        print("predicted dish - ", pred_dish_name)
-        # output = Recipe.objects.filter(recipe_name=pred_dish_name)
-        # serializer = RecipeSerializer(output, many=True)
-        return Response(pred_dish_name)

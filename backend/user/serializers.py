@@ -2,8 +2,21 @@ from rest_framework import serializers
 from .models import User, Favourites  #Account, User
 from django.contrib.auth import authenticate
 
+class FavouritesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favourites
+        fields = '__all__'
+
+    def create(self, validated_data):
+        print("la la la ", validated_data)
+        user_id = validated_data.pop('user_id')
+        recipe_id = validated_data.pop('recipe_id')
+        user_obj = User.objects.get(pk=user_id)
+        favourites = Favourites.objects.create(user=user_obj, **recipe_id) # HERE!
+        return favourites
 
 class UserRegisterSerializer(serializers.ModelSerializer):
+    favourites = FavouritesSerializer(many=True, required=False)
     class Meta:
         model = User
         fields = ('email', 'password', 'first_name', 'last_name')
@@ -17,6 +30,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         return user
 
 class LoginSerializer(serializers.Serializer):
+    favourites = FavouritesSerializer(many=True, required=False)
     email = serializers.CharField()
     password = serializers.CharField()
 
@@ -27,13 +41,10 @@ class LoginSerializer(serializers.Serializer):
             return user
         raise serializers.ValidationError("incorrect credentials")
 
-class FavouritesSerializer(serializers.Serializer):
-    class Meta:
-        model = Favourites
-        fields = '__all__'
+
 
 class UserSerializer(serializers.ModelSerializer):
-    favourites = FavouritesSerializer(many=True)
+    favourites = FavouritesSerializer(many=True, required=False)
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', 'favourites')
+        fields = '__all__' #('email', 'first_name', 'last_name', 'favourites')
