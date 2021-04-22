@@ -3,6 +3,9 @@ export type RootStackParamList = {
   NotFound: undefined;
   PredResults: undefined;
   SearchResults: undefined;
+  DishInfo: undefined;
+  IngredientsListSearch: undefined;
+  SearchByIngredientsResultsScreen: undefined;
 };
 
 export type BottomTabParamList = {
