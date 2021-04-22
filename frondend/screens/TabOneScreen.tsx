@@ -191,7 +191,7 @@ export default function TabOneScreen({navigation,}: StackScreenProps<RootStackPa
                  <ImageBackground
                     style={styles.backgroundImage}
                     
-                    source={require('../components/Images/z3.jpg')}
+                    source={require('../components/Images/z5.jpg')}
                   >
                       <Text style={styles.bgtext} >Search by ingredients</Text>
           
