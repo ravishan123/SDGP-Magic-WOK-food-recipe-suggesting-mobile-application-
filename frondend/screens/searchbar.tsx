@@ -28,6 +28,29 @@
 //     userIngredientlist: [],
 //   }
 
+//   // loadModal = () => {
+//   //   return (
+//   //     <View style={styles.centeredView}>
+//   //       <Modal
+//   //         animationType="slide"
+//   //         transparent={true}
+//   //         visible={this.state.isLoading}
+//   //         onRequestClose={() => {
+//   //           Alert.alert('Modal has been closed.');
+//   //         }}>
+//   //         <View style={styles.centeredView}>
+//   //           <View style={styles.modalView}>
+//   //             <Text style={styles.modalText}>
+//   //               <ActivityIndicator size="large" color="#00ff00" />
+//   //             </Text>
+//   //           </View>
+//   //         </View>
+
+//   //       </Modal>
+
+//   //     </View>
+//   //   );
+//   // }
 
 
 //   pickFromGallery = async()=>{
@@ -47,7 +70,24 @@
 //      form_data.append('image_base64', data.base64);
 //      this.props.navigation.navigate('PredResults', form_data)
 
-    
+//     //  axios.post('http://10.0.2.2:8000/api/image_recognition', form_data, {
+//     //    headers: {
+//     //      'content-type': 'multipart/form-data'
+//     //    }
+//     //  }).then(res => {
+//     //    console.log(res)
+//     //    this.setState({
+//     //     predictedValues: res.data[0], 
+//     //     isLoading: false,
+//     //   })
+//     //   this.props.navigation.navigate('PredResults')
+//     //  }).catch(err => {
+//     //    console.log(err)
+//     //    this.setState({
+//     //     modalPredictVisible: false,
+//     //     isLoading: false,
+//     //     })
+//     //   })
    
 //     }else{
 //      Alert.alert("you need to give permission to continue")
@@ -67,7 +107,10 @@
 //      console.log(data)
 //      this.setState({modalPredictVisible:true})
      
-  
+//     //  console.log(base64.isbase64(data.base64))
+//     //  axios.post('http://127.0.0.1:8000/api/image_recognition', ).then(res => {
+//     //    console.log(res)
+//     //  }).catch(err => console.log(err))
 //       // ImagePicker saves the taken photo to disk and returns a local URI to it
 //       let localUri = data.uri;
 //       let base64 = data.base64;
@@ -82,7 +125,24 @@
   
 //           form_data.append('image_base64', data.base64);
   
-   
+//      this.props.navigation.navigate('PredResults', form_data)
+//     //  axios.post('http://10.0.2.2:8000/api/image_recognition', form_data, {
+//     //   headers: {
+//     //     'content-type': 'multipart/form-data'
+//     //   }
+//     // }).then(res => {
+//     //   console.log(res)
+//     //   this.setState({
+//     //     predictedValues: res.data[0], 
+//     //     isLoading: false,
+//     //   })
+//     // }).catch(err => {
+//     //   console.log(err)
+//     //   this.setState({
+//     //    modalPredictVisible:false,
+//     //    isLoading: false,
+//     //    })
+//     //  })
   
 //     }else{
 //      Alert.alert("you need to give permission to continue")
@@ -105,7 +165,20 @@
 //     let form_data = new FormData();
 //     form_data.append('search_key', this.state.searchValue);
 //     this.props.navigation.navigate('SearchResults', form_data)
- 
+//   //   axios.post('http://10.0.2.2:8000/api/recipe_search_by_ingredient', form_data)
+//   //   .then(res => {
+//   //     console.log(res.data)
+//   //     this.setState({
+//   //       searchResults: res.data, 
+//   //       isLoading: false
+//   //     })
+//   //     this.props.navigation.navigate('PredResults')
+//   //   }).catch(err => {
+//   //     console.log(err)
+//   //     this.setState({
+//   //       isLoading: false
+//   //     })
+//   //   })
 //   }
 
 //   addUserIngredients = () => {
@@ -129,13 +202,44 @@
 //     return (
 //       <Container style={styles.container}>
 
+//         {/* <View style={styles.headerContainer}> */}
+//           {/* <Header  style={styles.header} searchBar rounded >
+//                 <Item>
+//                   <Icon name="search"/>
+//                     <TextInput
+//                       onChangeText={this.handleChange}
+//                       placeholder='search' />
+//                 </Item>
+//                 <TouchableOpacity 
+//                 style={styles.arrowButton}
+//                 onPress={this.handleSubmitIngredient}
+//                 >
+//                   <AntDesign name="rightcircleo" size={30} color="white" />
+//                 </TouchableOpacity>
+//           </Header> */}
 //           <SearchBar
 //               placeholder="Type Here..."
 //               onChangeText={this.handleChange}
 //               value={this.state.searchValue}
 //               onSubmitEditing={this.handleSubmitIngredient}
 //           />
+//         {/* </View> */}
+
+//         {/* <View>
+//           {this.state.userIngredientlist && this.state.userIngredientlist.map(item => {
+//             <Text>
+//               {item}
+//             </Text>
+//           })}
+//         </View> */}
+
         
+//         {/* <View style={styles.bodyContainer}>
+//           <TouchableOpacity style={styles.button} onPress={()=> this.pickFromCamera()}>
+//             <Text>
+//               camera
+//             </Text>
+//           </TouchableOpacity >
 
 
 //           <TouchableOpacity style={styles.button} onPress={()=> this.pickFromGallery()}>
@@ -146,7 +250,20 @@
 //           <Button title="Camera" onPress={() => this.pickFromCamera()} />
 //           <Button title="Gallery" onPress={()=> this.pickFromGallery()} />
 
-        
+//           {/* <TouchableOpacity style={styles.button}           
+//             onPress={
+//               () => this.setState({modalPredictVisible:true})
+//             //  () => console.log("CLIKED")
+//             }>
+//             <Text>
+//               search
+//             </Text>
+//           </TouchableOpacity>   */}
+//         {/* </View> */}
+//         {/* {this.loadModal()}    */}
+//         {/* {this.resultModal()}        */}
+//         {/* <PredResult visible={this.state.modalPredictVisible} predictedValues={this.state.predictedValues} handler={this.parentHandlerForPredict} />
+//         <SearchResult visible={this.state.modalSearchVisible} searchResults={this.state.searchResults} handler={this.parentHandlerForSearch} /> */}
 //       </Container>
 //     );
 //   }  

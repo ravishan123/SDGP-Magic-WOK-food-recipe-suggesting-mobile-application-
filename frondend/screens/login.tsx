@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet , Image, ImageBackground,TextInput,Button} from 'react-native';
+import { StyleSheet , Image, ImageBackground,TextInput,Button, AsyncStorage,Alert} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { StackScreenProps } from '@react-navigation/stack';
 import EditScreenInfo from '../components/EditScreenInfo';
@@ -7,7 +7,6 @@ import { Text, View } from '../components/Themed';
 import { RootStackParamList } from '../types';
 import axios from 'axios';
 import SyncStorage from 'sync-storage';
-
 
 export default function register ({navigation,} : StackScreenProps<RootStackParamList, 'Root'>) {
   const image = { uri: "https://media.istockphoto.com/vectors/preparations-and-mushroom-dishes-on-a-white-background-vector-id1264636364?s=612x612" };
@@ -22,12 +21,15 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
   const loginUser = () =>  {
     // navigation.navigate('Root')
     console.log(`inputs`, inputs)
-    axios.post('http://10.0.2.2:8000/api/auth/login', inputs).then(res =>{
+    axios.post('http://3.131.141.252/api/auth/login', inputs).then(res =>{
     // axios.post('http://3.128.43.16/api/auth/login', inputs).then(res =>{
       console.log(`res`, res)
       if(res.status === 200){
+        SyncStorage.set('user_data', res.data);
+        AsyncStorage.setItem('favourites', JSON.stringify([]))
         navigation.navigate('Root')
-        SyncStorage.set('login_details', res.data);
+      }else{
+        alert("Something went wrong, check your values anf try again!")
       }
     }).catch(err => {
       console.log(`err`, err.message)
@@ -36,11 +38,6 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
 
    return(
     <View style={styles.container}>
-      <View>
-         <TouchableOpacity onPress={()=> navigation.navigate('Open')}>
-          <Image source={require('../components/Images/k1.png')} style={{width:30, height:30, marginLeft:'5%',marginTop:30}}></Image> 
-          </TouchableOpacity>
-          </View>
       <ImageBackground source ={require('../components/Images/i4.jpg')} style={styles.image}>
       <View style={{marginLeft:40,marginRight:40,marginTop:220,marginBottom:120,backgroundColor:'white',borderRadius:30,borderWidth:0,}}>
 

@@ -15,7 +15,7 @@ export default function First_page({navigation,} : StackScreenProps<RootStackPar
   
     setTimeout(() => {
       setAlign('flex-start'), setAlignsecond(true);
-    }, 6000);
+    }, 7000);
   
 
   return (
@@ -23,13 +23,13 @@ export default function First_page({navigation,} : StackScreenProps<RootStackPar
        {alignsecond ? null : (
     <View>
         {/* <ImageBackground source ={require('../components/Images/new.gif')} style={styles.image}></ImageBackground> */}
-        <Image source={require('../components/Images/first1.gif')} style={{width:'100%',resizeMode: 'cover'}}></Image>
+        <Image source={require("../components/Images/loading.gif")} style={{width:'100%',resizeMode: 'cover'}}></Image>
       </View>
        )}
            {!alignsecond ? null : (
              <View>
           <View style={{marginTop:-40,backgroundColor:'white'}}>
-        <Image source={require('../components/Images/i1.jpg')} style={{width:'100%',height:500,resizeMode: 'cover'}}></Image>
+        <Image source={require("../components/Images/i1.jpg")} style={{width:'100%',height:500,resizeMode: 'cover'}}></Image>
         </View>
         
     <View style={{marginTop:50,padding:10,borderRadius:15,backgroundColor:"white",marginLeft:20,marginRight:20,borderWidth:2,borderColor:"#fbb124"}}>

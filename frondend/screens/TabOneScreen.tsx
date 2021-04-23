@@ -18,24 +18,9 @@ export default function TabOneScreen({navigation,}: StackScreenProps<RootStackPa
 
   // France
 
-  // const [searchedValues, setSearchedValues] = React.useState('');
   const [categoryValues, setCategoryValues] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
-  // const [currentId, setCurrentId] = React.useState('');
 
-  // React.useEffect(() => {
-  //   setIsLoading(true)
-  //   axios.get('http://10.0.2.2:8000/api/home_recipe_france', {
-
-  //   }).then(res => {
-  //     console.log('res -- ', res)
-  //     setSearchedValues(res.data)
-  //     setIsLoading(false)
-  //   }).catch(err => {
-  //     console.log(err)
-  //     setIsLoading(false)
-  //    })
-  // }, []);
 
   const selectDish = (item) => {
     console.log('item ', item)
@@ -45,7 +30,7 @@ export default function TabOneScreen({navigation,}: StackScreenProps<RootStackPa
  /// all reciepies at once
   React.useEffect(() => {
     setIsLoading(true)
-    axios.get('http://10.0.2.2:8000/api/recipes_for_home', {
+    axios.get('http://3.131.141.252/api/recipes_for_home', {
 
     }).then(res => {
       console.log('res -- ', res.data)
@@ -56,141 +41,6 @@ export default function TabOneScreen({navigation,}: StackScreenProps<RootStackPa
       setIsLoading(false)
      })
   }, []);
-
-  // Mexican
-
-  // const [searchedValuesMexican, setSearchedValuesMexican] = React.useState('');
-  // const [isLoadingMexican, setIsLoadingMexican] = React.useState(false);
-
-  // React.useEffect(() => {
-  //   setIsLoadingMexican(true)
-  //   axios.get('http://10.0.2.2:8000/api/home_recipe_mexican', {
-
-  //   }).then(res => {
-  //     console.log('res -- ', res)
-  //     setSearchedValuesMexican(res.data)
-  //     setIsLoadingMexican(false)
-  //   }).catch(err => {
-  //     console.log(err)
-  //     setIsLoadingMexican(false)
-  //    })
-  // }, []);
-
-  // Chinese
-
-  // const [searchedValuesChinese, setSearchedValuesChinese] = React.useState('');
-  // const [isLoadingChinese, setIsLoadingChinese] = React.useState(false);
-
-  // React.useEffect(() => {
-  //   setIsLoadingChinese(true)
-  //   axios.get('http://10.0.2.2:8000/api/home_recipe_chinese', {
-
-  //   }).then(res => {
-  //     console.log('res -- ', res)
-  //     setSearchedValuesChinese(res.data)
-  //     setIsLoadingChinese(false)
-  //   }).catch(err => {
-  //     console.log(err)
-  //     setIsLoadingChinese(false)
-  //    })
-  // }, []);
-
-
-    // Asian
-
-    // const [searchedValuesAsian, setSearchedValuesAsian] = React.useState('');
-    // const [isLoadingAsian, setIsLoadingAsian] = React.useState(false);
-  
-    // React.useEffect(() => {
-    //   setIsLoadingAsian(true)
-    //   axios.get('http://10.0.2.2:8000/api/home_recipe_asian', {
-  
-    //   }).then(res => {
-    //     console.log('res -- ', res)
-    //     setSearchedValuesAsian(res.data)
-    //     setIsLoadingAsian(false)
-    //   }).catch(err => {
-    //     console.log(err)
-    //     setIsLoadingAsian(false)
-    //    })
-    // }, []);
-
-  // Italian
-
-  // const [searchedValuesItalian, setSearchedValuesItalian] = React.useState('');
-  // const [isLoadingItalian, setIsLoadingItalian] = React.useState(false);
-
-  // React.useEffect(() => {
-  //   setIsLoadingItalian(true)
-  //   axios.get('http://10.0.2.2:8000/api/home_recipe_italy', {
-
-  //   }).then(res => {
-  //     console.log('res -- ', res)
-  //     setSearchedValuesItalian(res.data)
-  //     setIsLoadingItalian(false)
-  //   }).catch(err => {
-  //     console.log(err)
-  //     setIsLoadingItalian(false)
-  //    })
-  // }, []);
-
-  // Japanese
-
-  // const [searchedValuesJapanese, setSearchedValuesJapanese] = React.useState('');
-  // const [isLoadingJapanese, setIsLoadingJapanese] = React.useState(false);
-
-  // React.useEffect(() => {
-  //   setIsLoadingJapanese(true)
-  //   axios.get('http://10.0.2.2:8000/api/home_recipe_japanese', {
-
-  //   }).then(res => {
-  //     console.log('res -- ', res)
-  //     setSearchedValuesJapanese(res.data)
-  //     setIsLoadingJapanese(false)
-  //   }).catch(err => {
-  //     console.log(err)
-  //     setIsLoadingJapanese(false)
-  //    })
-  // }, []);
-
-  // Arabic
-
-  // const [searchedValuesArabic, setSearchedValuesArabic] = React.useState('');
-  // const [isLoadingArabic, setIsLoadingArabic] = React.useState(false);
-
-  // React.useEffect(() => {
-  //   setIsLoadingArabic(true)
-  //   axios.get('http://10.0.2.2:8000/api/home_recipe_arabic', {
-
-  //   }).then(res => {
-  //     console.log('res -- ', res)
-  //     setSearchedValuesArabic(res.data)
-  //     setIsLoadingArabic(false)
-  //   }).catch(err => {
-  //     console.log(err)
-  //     setIsLoadingArabic(false)
-  //    })
-  // }, []);
-
-  // American
-
-  // const [searchedValuesAmerican, setSearchedValuesAmerican] = React.useState('');
-  // const [isLoadingAmerican, setIsLoadingAmerican] = React.useState(false);
-
-  // React.useEffect(() => {
-  //   setIsLoadingAmerican(true)
-  //   axios.get('http://10.0.2.2:8000/api/home_recipe_american', {
-
-  //   }).then(res => {
-  //     console.log('res -- ', res)
-  //     setSearchedValuesAmerican(res.data)
-  //     setIsLoadingAmerican(false)
-  //   }).catch(err => {
-  //     console.log(err)
-  //     setIsLoadingAmerican(false)
-  //    })
-  // }, []);
-
 
 
   const Loading = () => (

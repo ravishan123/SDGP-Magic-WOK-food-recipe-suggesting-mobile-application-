@@ -17,21 +17,14 @@ import SyncStorage from 'sync-storage';
 
 export default function TabFourScreen({navigation,}: StackScreenProps<RootStackParamList, 'Setting'>,props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
 
-  
     const [image, setImage] = useState(null);
-    const [accoutData, setAccountData] = useState('')
-    const [registerData,setData] = useState('')
+    const [userData, setUserData] = useState('');
   
     useEffect(() => {
-      const login_details = SyncStorage.get('login_details');
-      console.log('login_details :>> ', login_details);
-      setAccountData(login_details);
-
-      const register_details = SyncStorage.get('register_details');
-      console.log('register_details :>> ', register_details);
-      setData(register_details);
-
       (async () => {
+        var user_data = SyncStorage.get('user_data');
+        console.log(user_data.user)
+        setUserData(user_data.user)
         if (Platform.OS !== 'web') {
           const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
           if (status !== 'granted') {
@@ -60,9 +53,7 @@ export default function TabFourScreen({navigation,}: StackScreenProps<RootStackP
   return (
         
       <View style={{backgroundColor:'white'}}>
-          <ScrollView showsVerticalScrollIndicator={false}> 
-          {/* <ImageBackground source ={require('../components/Images/i5.jpg')} style={styles.image}> */}
-       
+          <ScrollView showsVerticalScrollIndicator={false}>     
             <View style={{backgroundColor:'black',height:150,width:'100%'}}> 
               <TouchableOpacity onPress={()=> navigation.navigate('Setting')}>
               <Image source={require('../components/Images/s2.jpg')} style={{width: 30, height: 30, borderRadius:100 ,marginLeft:'85%', marginTop:20}}></Image> 
@@ -71,8 +62,7 @@ export default function TabFourScreen({navigation,}: StackScreenProps<RootStackP
               
               <View style={{alignItems:'center'}}>
            
-             
-              {/*  */}
+
               <View 
         style = {{
           height : 200 ,
@@ -103,23 +93,17 @@ export default function TabFourScreen({navigation,}: StackScreenProps<RootStackP
               
 
             <View style={{marginTop:5 , backgroundColor:'white'}}>  
-            <Text style={{marginTop:25, color:'#fbb124',marginBottom:5,borderBottomColor:'#fbb124',
-    borderBottomWidth:2}}></Text>
-            <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:-10,color:'#a9a9a9'}}>First Name : {accoutData && accoutData.user.first_name}{registerData && registerData.user.first_name}</Text>
-              <Text style={{marginTop:-10, color:'gray',marginBottom:5,borderBottomColor:'#fbb124',
-    borderBottomWidth:2}}></Text>
-              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:-10 ,color:'#a9a9a9'}}>Last Name : {accoutData && accoutData.user.last_name}</Text>
+            <Text style={{marginTop:25, color:'#fbb124',marginBottom:5,borderBottomColor:'#fbb124',borderBottomWidth:2}}></Text>
+              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:-10,color:'#a9a9a9'}}>First Name - {userData.first_name}</Text>
+              <Text style={{marginTop:-10, color:'gray',marginBottom:5,borderBottomColor:'#fbb124',borderBottomWidth:2}}></Text>
+              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:-10,color:'#a9a9a9'}}>Last Name - {userData.last_name}</Text>
+              <Text style={{marginTop:-10, color:'gray',marginBottom:5,borderBottomColor:'#fbb124',borderBottomWidth:2}}></Text>
+              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:-10 ,color:'#a9a9a9'}}>Email - {userData.email}</Text>
               <Text style={{marginTop:-10, color:'#fbb124',marginBottom:5,borderBottomColor:'#fbb124',
     borderBottomWidth:2}}></Text>
-            
-              <Text style={{padding:10, fontWeight:'bold',fontSize:18,marginTop:0,color:'#a9a9a9'}}>Email : {accoutData && accoutData.user.email}</Text>
-              <Text style={{marginTop:-10, color:'gray',marginBottom:5,borderBottomColor:'#fbb124',
-    borderBottomWidth:2}}></Text>
-              <Text style={{padding:10, fontWeight:'bold',fontSize:5,marginBottom:"10%",color:'black'}}></Text>
+              <Text style={{padding:10, fontWeight:'bold',fontSize:5,marginBottom:"50%",color:'black'}}></Text>
 
               </View>
-              
-              {/* </ImageBackground> */}
           </ScrollView> 
       </View>
       );

@@ -14,7 +14,7 @@ import register from '../screens/register';
 import login from '../screens/login';
 import DishInfo from '../screens/DishInfo'
 import searchbar from '../screens/searchbar';
-// import searchbar2 from '../screens/searchbar2';
+import searchbar2 from '../screens/searchbar2';
 import IngredientsListSearch from '../screens/IngredientsListSearch';
 import SettingsScreen from '../screens/SettingScreen';
 import { RootStackParamList } from '../types';
@@ -23,8 +23,6 @@ import LinkingConfiguration from './LinkingConfiguration';
 import TabOneScreen from '../screens/TabOneScreen';
 import First_page from '../screens/First_page';
 
-// If you are not familiar with React Navigation, we recommend going through the
-// "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
     <NavigationContainer
@@ -35,8 +33,6 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
   );
 }
 
-// A root stack navigator is often used for displaying modals on top of all other content
-// Read more here: https://reactnavigation.org/docs/modal
 const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
@@ -55,7 +51,7 @@ function RootNavigator() {
       <Stack.Screen name="help" component={help} options={{title:'help'}}/>
       <Stack.Screen name="about" component={about} options={{title:'about'}}/>
       <Stack.Screen name="searchbar" component={searchbar} options={{title:'searchbar'}}/>
-      {/* <Stack.Screen name="searchbar2" component={searchbar2} options={{title:'searchbar2'}}/> */}
+      <Stack.Screen name="searchbar2" component={searchbar2} options={{title:'searchbar2'}}/>
       <Stack.Screen name="accountSetting" component={accountSetting} options={{title:'accountSetting'}}/>
       <Stack.Screen name="login" component={login} options={{title:'login'}}/>
       <Stack.Screen name="one" component={TabOneScreen} options={{title:'one'}}/>

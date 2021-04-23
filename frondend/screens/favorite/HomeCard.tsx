@@ -5,31 +5,35 @@ import { ScrollView } from 'react-native-gesture-handler';
 //import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 //import { SafeAreaView } from 'react-native';
-import {  Icon } from 'react-native-elements';
+import { Card,Button, Icon } from 'react-native-elements';
 import Background from '../../components/Background';
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 
 export default function HomeCard(){
 
 
     return(
-       
+        // <View style={{backgroundColor:'white',padding:20, }}>
+        //     <Card title="Local Modules">
+        //       <Image source={require('../../components/images/food1.jpg')} style={{ width: 100, height:100}}></Image>
+        //         <Text style = {{color:'black'}}>
+        //         spaghetti
+        //         </Text>
+        //     </Card>
+        // </View>
 
         <SafeAreaView style={styles.container}>
       <View style={styles.container}>
-       
-          <Card style={styles.card}>
-         
-                <TouchableOpacity style={{marginLeft:5}}>
-                    <Card.Cover source={require('../../components/Images/hotdog.jpg')} style={styles.cardImg}/>
-                      <Card.Content>
-                        <Title>Hotdog</Title>
-                      </Card.Content>
-                     
-                </TouchableOpacity>
-                         
-            
-          </Card>
+        <Card containerStyle = {styles.card}>
+
+          <Image source={require('../../components/Images/food1.jpg')} style={{ width: 130, height: 82 }} /> 
+          {/* <Text style={styles.paragraph}>
+          spaghetti       
+            </Text> */}
+          <TouchableOpacity>
+            <Text style = {styles.btnText}> spaghetti  </Text>
+          </TouchableOpacity>
+
+        </Card>
       </View>
     </SafeAreaView>
 
@@ -41,7 +45,8 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      
+      //paddingTop: 5,
+      //backgroundColor: '#333333',
       
     },
     paragraph: {
@@ -58,20 +63,30 @@ const styles = StyleSheet.create({
       
     },
   
-   
-    card:{
-      marginBottom:15,
-      height:'100%',
-      borderRadius:15,
-      marginRight:20,
-      width:150,
-      
-     
+    btnText:{
+      fontSize: 15,
+      color: 'black',
+      fontWeight: 'bold',
+      textAlign: 'center',
+      backgroundColor: 'white',
+    //   borderRadius: 10,
+    //   borderWidth: 2,
+      paddingBottom: 2,
+      paddingTop: 2,
     },
   
-    cardImg:{
-      padding:5,
-    
-
+    card:{
+      // backgroundColor: '#d3816f',
+      backgroundColor: 'white',
+      borderRadius: 5,
     },
+  
+    // icon:{
+    //   paddingLeft: 10,
+    // },
+  
+    // rating:{
+    //   paddingLeft: 10
+    // }
+  
   });

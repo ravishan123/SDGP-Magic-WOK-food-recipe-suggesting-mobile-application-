@@ -32,6 +32,7 @@ export default function about({navigation,}: StackScreenProps<RootStackParamList
       dietary intake, such as increased fruit and vegetable intake among young adults. We should think about home cooking.
       The problems behind the home cooking are looking up recipes, fetching ingredients, prepping the kitchen, prepping the ingredients
       (chopping vegetables and it has to be done properly to look pretty and cook well). {'\n'}</Text>
+      
       <Text>
       {'\u2B24'} Sometimes we come across situations where we don’t know what to do with the ingredients that we have at home or 
       situations where we want to skip the routine meal and try something new with what we have at home. We also come across 

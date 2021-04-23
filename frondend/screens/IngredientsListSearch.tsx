@@ -36,7 +36,7 @@ export default function IngredientsListSearch({navigation,}: StackScreenProps<Ro
      let form_data = new FormData();
      form_data.append('image_base64', data.base64);
 
-     axios.post('http://10.0.2.2:8000/api/ingredient_image_recognition', form_data, {
+     axios.post('http://3.131.141.252/api/ingredient_image_recognition', form_data, {
       headers: {
         'content-type': 'multipart/form-data'
       }
@@ -77,7 +77,7 @@ export default function IngredientsListSearch({navigation,}: StackScreenProps<Ro
   
       form_data.append('image_base64', data.base64);
   
-     axios.post('http://10.0.2.2:8000/api/ingredient_image_recognition', form_data, {
+     axios.post('http://3.131.141.252/api/ingredient_image_recognition', form_data, {
       headers: {
         'content-type': 'multipart/form-data'
       }
@@ -230,12 +230,13 @@ const styles = StyleSheet.create({
     flexDirection:'column'
   },
   container2:{
-    height:'8%',
+    height:'12%',
     flexDirection:'row',
     width:'100%',
     backgroundColor:'#5D6D7E'
   },
   textinput:{
+    marginTop: 50,
     height:'75%',
     backgroundColor:'white',
     width:'80%',
@@ -245,7 +246,7 @@ const styles = StyleSheet.create({
     alignContent:'center', 
   },
   button:{
-    marginTop:'3%',
+    marginTop:'12%',
     marginLeft:'2%',
   },
   icon:{

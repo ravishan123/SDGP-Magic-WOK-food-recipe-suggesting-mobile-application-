@@ -16,7 +16,8 @@ export default function SearchResultsScreen({
   React.useEffect(() => {
     console.log("Pred Results", route.params)
     setIsLoading(true)
-    axios.post('http://10.0.2.2:8000/api/recipe_search_by_ingredient', route.params, {
+    axios.post('http://3.131.141.252/api/recipe_search', route.params, {
+    // axios.post('http://3.128.43.16/api/recipe_search_by_ingredient', route.params, {
       headers: {
         'content-type': 'multipart/form-data'
       }

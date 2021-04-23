@@ -22,12 +22,15 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
   const registerUser = () =>  {
     // navigation.navigate('Root')
     console.log(`inputs`, inputs)
-    axios.post('http://10.0.2.2:8000/api/auth/register', inputs).then(res =>{
+    axios.post('http://3.131.141.252/api/auth/register', inputs).then(res =>{
     // axios.post('http://3.128.43.16/api/auth/register', inputs).then(res =>{
       console.log(`res`, res)
       if(res.status === 200){
         navigation.navigate('Root')
-        SyncStorage.set('login_details', res.data);
+        SyncStorage.set('user_data', res.data);
+        AsyncStorage.setItem('favourites', JSON.stringify([]))
+      }else{
+        alert("Something went wrong, check your values anf try again!")
       }
     }).catch(err => {
       console.log(`err`, err.message)
@@ -79,14 +82,6 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
           placeholderTextColor='#a9a9a9'
           
         />
-
-        {/* <TextInput
-          style={styles.input}
-          placeholder='Username :'
-          autoCapitalize="none"
-          placeholderTextColor='#a9a9a9'
-          
-        /> */}
         <TextInput
           style={styles.input}
           placeholder='Password :'
@@ -108,22 +103,9 @@ export default function register ({navigation,} : StackScreenProps<RootStackPara
          
         />
 
-        {/* <TextInput
-          style={styles.input}
-          placeholder='Phone Number :'
-          autoCapitalize="none"
-          placeholderTextColor='#a9a9a9'
-          
-        /> */}
         </View>
         <View style={{marginTop:30,padding:0,borderRadius:50,marginLeft:20,marginRight:20}}>
           
-        {/* <Button
-          title='  Register  '
-          onPress={()=> navigation.navigate('Root')} 
-          color={'#fbb124'}
-      
-        /> */}
         <TouchableOpacity  onPress={registerUser}>
         <Text style={{padding:12,fontWeight:'bold',fontSize:25,marginTop:'5%',color:'white',backgroundColor:'#fbb124',textAlign:'center',borderRadius:50}}>Register</Text>
 
@@ -167,4 +149,3 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
 });
-

@@ -15,7 +15,8 @@ export default function PredResultsScreen({
   React.useEffect(() => {
     console.log("Pred Results", route.params)
     setIsLoading(true)
-    axios.post('http://10.0.2.2:8000/api/image_recognition', route.params, {
+    axios.post('http://3.131.141.252/api/image_recognition', route.params, {
+    // axios.post('http://3.128.43.16/api/image_recognition', route.params, {
       headers: {
         'content-type': 'multipart/form-data'
       }

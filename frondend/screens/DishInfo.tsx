@@ -1,10 +1,3 @@
-// import { StackScreenProps } from '@react-navigation/stack';
-// import * as React from 'react';
-// import axios from 'axios'
-// import { StyleSheet, Text, TouchableOpacity, View, ScrollView, TouchableHighlight, Image, ActivityIndicator } from 'react-native';
-
-// import { RootStackParamList } from '../types';
-// import { Divider } from 'react-native-elements';
 import * as React from 'react';
 import { StyleSheet, ScrollView, SafeAreaView,FlatList,Image,TouchableOpacity,ActivityIndicator,TouchableHighlight,TextInput,ImageBackground,AsyncStorage} from 'react-native';
 import axios from 'axios'
@@ -35,20 +28,6 @@ export default function SearchResultsScreen({navigation, route}: StackScreenProp
   React.useEffect(() => {
     console.log("Pred Results", route.params)
     setDishInfo(route.params)
-    // setIsLoading(true)
-    // axios.post('http://10.0.2.2:8000/api/recipe_search_by_ingredient', route.params, {
-    // // axios.post('http://3.128.43.16/api/recipe_search_by_ingredient', route.params, {
-    //   headers: {
-    //     'content-type': 'multipart/form-data'
-    //   }
-    // }).then(res => {
-    //   console.log('res -- ', res)
-    //   setSearchedValues(res.data)
-    //   setIsLoading(false)
-    // }).catch(err => {
-    //   console.log(err)
-    //   setIsLoading(false)
-    //  })
   }, []);
 
   const Loading = () => (
@@ -57,19 +36,26 @@ export default function SearchResultsScreen({navigation, route}: StackScreenProp
       </View>
   )
 
-  const addToFavourites = (id) => {
-    setIsFavourite(!isFavourite)
-    var user_data = SyncStorage.get('user_data')
-    console.log(`user_data`, user_data)
-    var data = {dish_id:id, user_id:user_data.user.id, is_favourite:isFavourite}
-    axios.post('http://10.0.2.2:8000/api/auth/favourites', data).then(res => {
-        console.log('res -- ', res)
-        // setSearchedValues(res.data)
-        setIsLoading(false)
-      }).catch(err => {
-        console.log(err)
-        setIsLoading(false)
-      })
+  const addToFavourites = () => {
+
+    AsyncStorage.getItem('favourites').then((favourite)=>{
+      if (favourite !== null) {
+        // We have data!!
+        const favouritesList = JSON.parse(favourite)
+        favouritesList.push(dishInfo)
+        console.log(`favouritesList`, favouritesList)
+        AsyncStorage.setItem('favourites',JSON.stringify(favouritesList));
+      }
+      else{
+        const favouritesList  = []
+        favouritesList.push(itemcart)
+        AsyncStorage.setItem('cart',JSON.stringify(dishInfo));
+      }
+      // alert("Add Cart")
+    })
+    .catch((err)=>{
+      alert(err)
+    })
   }
 
 
@@ -144,7 +130,7 @@ export default function SearchResultsScreen({navigation, route}: StackScreenProp
               <Card style={{ backgroundColor: '#95abbf' }}>
                 <Card.Actions style={{ marginLeft: 130 }}>
                   <Button>Save</Button>
-                  <TouchableOpacity onPress={() => addToFavourites(dishInfo.id)}>
+                  <TouchableOpacity onPress={addToFavourites}>
                     <Icon
                       name='heart'
                       size={25}
@@ -226,53 +212,3 @@ const styles = StyleSheet.create({
   },
 });
 
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     padding: 20,
-//   },
-//   title: {
-//     fontSize: 20,
-//     fontWeight: 'bold',
-//   },
-//   link: {
-//     marginTop: 15,
-//     paddingVertical: 15,
-//   },
-//   linkText: {
-//     fontSize: 14,
-//     color: '#2e78b7',
-//   },
-//   centeredView: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     marginTop: 22,
-//   },
-//   openButton: {
-//     backgroundColor: '#F194FF',
-//     borderRadius: 20,
-//     padding: 10,
-//     elevation: 2,
-//     marginBottom: 30,
-//   },
-//   textStyle: {
-//     color: 'white',
-//     fontWeight: 'bold',
-//     textAlign: 'center',
-//   },
-//   modalText: {
-//     marginBottom: 15,
-//     textAlign: 'center',
-//     fontSize: 30,
-//     fontWeight: "500",
-//   },
-//   image:{
-//     width: 200,
-//     height: 200,
-//   },
-// });

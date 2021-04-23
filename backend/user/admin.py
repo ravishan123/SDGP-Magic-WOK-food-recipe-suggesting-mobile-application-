@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import User, Favourites
+from .models import User
 
-# Register your models here.
+# Register your models here.sd
 
 admin.site.register(User)
-admin.site.register(Favourites)

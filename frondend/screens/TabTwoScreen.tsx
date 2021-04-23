@@ -30,7 +30,8 @@ export default function TabTwoScreen({navigation,}: StackScreenProps<RootStackPa
       <ImageBackground source={image2} style={styles.image2}>
         <View style={styles.container3}>
           <Text style={styles.text2}>search {'\n'}by {'\n'}ingrdients</Text>
-          <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('searchbar2')} >
+          <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('IngredientsListSearch')} >
+          {/* <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('IngredientsListSearch')} > */}
             <AntDesign name="rightcircleo" size={40} color="white" />
           </TouchableOpacity>
         </View>

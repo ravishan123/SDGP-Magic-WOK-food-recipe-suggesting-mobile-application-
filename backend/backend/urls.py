@@ -21,5 +21,5 @@ urlpatterns = [
     path('', include('indexpage.urls')),
     path('', include('recipe.urls')),
     path('', include('user.urls')),
-  #dsdsd_ssas
+  
 ]

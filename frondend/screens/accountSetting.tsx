@@ -21,7 +21,7 @@ export default function accountSetting({navigation,}: StackScreenProps<RootStack
     const createTextAlert = () => {
       const login_details = SyncStorage.get('login_details');
       console.log(login_details);
-      navigation.navigate('Root')
+      navigation.navigate('login')
 
       Alert.alert(
         "Alert",
@@ -144,5 +144,3 @@ const styles = StyleSheet.create({
   },
 
 });
-
-
