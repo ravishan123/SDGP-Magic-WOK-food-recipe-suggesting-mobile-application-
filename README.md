@@ -23,22 +23,18 @@ The Django framework is written in python and it’s a well-structured framework
 
 
 Data base - SQLite
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<br/>
+<br/>
+
+<br/>
+
 
 
 <img align="left" alt="Visual Studio Code" width="auto" src="https://user-images.githubusercontent.com/66440787/118846131-0921cc00-b8ea-11eb-9972-2191deeeaa6a.jpg" />
 <div></div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+<br/>
+
 
 
 
