@@ -27,13 +27,18 @@ Data base - SQLite
 
 <img align="left" alt="Visual Studio Code" width="500px" src="https://user-images.githubusercontent.com/66440787/118846131-0921cc00-b8ea-11eb-9972-2191deeeaa6a.jpg" />
 
+
 <br>
 <br>
-### Who are we ?
+<br><br>
+<br>
+<br>
+# Who are we ?
 
 Team GENEX
-
--** Venuli  Nanayakkara  ([@venunana](https://github.com/venunana)) **
+<br>
+-** Venuli  Nanayakkara  ([@venunana](https://github.com/venunana)) **-
+<br>
 -** Nanduni Gajanayaka   ([@nadzmihisaree](https://github.com/nadzmihisaree)) **
 -** Thushamini Chathushika  ([@chathushika2000](https://github.com/chathushika2000)) **
 -** Ruvik perera  ([@ruvik2000](https://github.com/ruvik2000)) **
