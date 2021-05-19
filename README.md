@@ -7,13 +7,14 @@
 <br />
 
 
-<img align="left" alt="Visual Studio Code" width="500px" src="https://user-images.githubusercontent.com/66440787/118846131-0921cc00-b8ea-11eb-9972-2191deeeaa6a.jpg" />
-
-
+<img align="left" alt="Visual Studio Code" width="200px" src="https://user-images.githubusercontent.com/66440787/118846131-0921cc00-b8ea-11eb-9972-2191deeeaa6a.jpg" />
 
 
 <br />
+<br />
+<br />
 ## Tech Stack
+<br /><br />
 
 Frontend - React-Native
 
