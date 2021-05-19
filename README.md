@@ -30,7 +30,7 @@ Data base - SQLite
 
 
 
-<img align="left" alt="Visual Studio Code" width="250px" src="https://user-images.githubusercontent.com/66440787/118846131-0921cc00-b8ea-11eb-9972-2191deeeaa6a.jpg" />
+<img align="left" alt="Visual Studio Code" width="400px" src="https://user-images.githubusercontent.com/66440787/118846131-0921cc00-b8ea-11eb-9972-2191deeeaa6a.jpg" />
 
 <br />
 
