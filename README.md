@@ -67,23 +67,22 @@ Data base - SQLite
 
 Team GENEX
 <br>
-### Venuli  Nanayakkara  ([@venunana](https://github.com/venunana))
+ - **Venuli  Nanayakkara  ([@venunana](https://github.com/venunana))** 
 <br>
-  Nanduni Gajanayaka   ([@nadzmihisaree](https://github.com/nadzmihisaree))
+ - **Nanduni Gajanayaka   ([@nadzmihisaree](https://github.com/nadzmihisaree))** 
 <br>
-Thushamini Chathushika  ([@chathushika2000](https://github.com/chathushika2000)) 
-
+- **Thushamini Chathushika  ([@chathushika2000](https://github.com/chathushika2000))**  
 <br>
-  Ruvik perera  ([@ruvik2000](https://github.com/ruvik2000)) 
+- **Ruvik perera  ([@ruvik2000](https://github.com/ruvik2000))**  
 <br>
- Madushan Neelananda  ([@madushan1299](https://github.com/madushan1299)) 
+- **Madushan Neelananda  ([@madushan1299](https://github.com/madushan1299))**  
 <br>
- Ravishan Premarathne  ([@ravishan123](https://github.com/ravishan123)) 
+- **Ravishan Premarathne  ([@ravishan123](https://github.com/ravishan123))**  
 
 
 
 - **Venuli  Nanayakkara ([@JoyMace](https://github.com/JoyMace))** 
-- **Jacob Bloom ([@mrjacobbloom](https://github.com/mrjacobbloom))** - server and testing
+- **Nanduni Gajanayaka([@mrjacobbloom](https://github.com/mrjacobbloom))** - server and testing
 - **Robert Rosetti ([@RobertRossetti](https://github.com/RobertRossetti))** - database
 - **Eliott Ishak ([@elis7999](https://github.com/elis7999))** - maps and Google APIs
 - **Tuqa Alaithan ([@Totoistough](https://github.com/Totoistough))** - front-end design
