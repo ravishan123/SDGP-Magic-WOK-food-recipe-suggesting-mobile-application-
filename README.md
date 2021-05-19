@@ -15,7 +15,7 @@
 
 
 
-## Tech Stack
+# Tech Stack
 <br />
 <br />
 <br />
