@@ -24,8 +24,14 @@ The Django framework is written in python and it’s a well-structured framework
 
 Data base - SQLite
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<img align="left" alt="Visual Studio Code" width="500px" src="https://user-images.githubusercontent.com/66440787/118846131-0921cc00-b8ea-11eb-9972-2191deeeaa6a.jpg" />
+
+<img align="left" alt="Visual Studio Code" width="auto" src="https://user-images.githubusercontent.com/66440787/118846131-0921cc00-b8ea-11eb-9972-2191deeeaa6a.jpg" />
 <div></div>
 
 <br>
@@ -44,7 +50,7 @@ Data base - SQLite
 
 # Who are we ?
 
-####Team GENEX
+#Team GENEX
 
 
 
