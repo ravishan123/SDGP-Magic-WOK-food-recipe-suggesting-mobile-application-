@@ -42,51 +42,18 @@ Data base - SQLite
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Who are we ?
 
-Team GENEX
-<br>
- - **Venuli  Nanayakkara  ([@venunana](https://github.com/venunana))** 
-<br>
- - **Nanduni Gajanayaka   ([@nadzmihisaree](https://github.com/nadzmihisaree))** 
-<br>
-- **Thushamini Chathushika  ([@chathushika2000](https://github.com/chathushika2000))**  
-<br>
-- **Ruvik perera  ([@ruvik2000](https://github.com/ruvik2000))**  
-<br>
-- **Madushan Neelananda  ([@madushan1299](https://github.com/madushan1299))**  
-<br>
-- **Ravishan Premarathne  ([@ravishan123](https://github.com/ravishan123))**  
+####Team GENEX
 
 
 
-- **Venuli  Nanayakkara ([@JoyMace](https://github.com/JoyMace))** 
-- **Nanduni Gajanayaka([@mrjacobbloom](https://github.com/mrjacobbloom))** - server and testing
-- **Robert Rosetti ([@RobertRossetti](https://github.com/RobertRossetti))** - database
-- **Eliott Ishak ([@elis7999](https://github.com/elis7999))** - maps and Google APIs
-- **Tuqa Alaithan ([@Totoistough](https://github.com/Totoistough))** - front-end design
-- **Jun Sheng ([@sntst](https://github.com/sntst))** - front-end design
+- **Venuli  Nanayakkara ([@venunana](https://github.com/venunana))** 
+- **Nanduni Gajanayaka([@nadzmihisaree](https://github.com/nadzmihisaree))**
+- **Thushamini Gajanayaka ([@chathushika2000](https://github.com/chathushika2000))**
+- **Ruvik Chathushika ([@ruvik2000](https://github.com/ruvik2000))** 
+- **Madushan Neelananda ([@ruvik2000](https://github.com/madushan1299))**
+- **Ravishan Premarathne([@ravishan123](https://github.com/ravishan123))** 
 
 
 
