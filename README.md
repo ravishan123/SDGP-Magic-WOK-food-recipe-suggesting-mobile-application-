@@ -41,6 +41,30 @@ Data base - SQLite
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Who are we ?
 
 Team GENEX
@@ -48,7 +72,10 @@ Team GENEX
 -** Venuli  Nanayakkara  ([@venunana](https://github.com/venunana)) **-
 <br>
 -** Nanduni Gajanayaka   ([@nadzmihisaree](https://github.com/nadzmihisaree)) **
+<br>
 -** Thushamini Chathushika  ([@chathushika2000](https://github.com/chathushika2000)) **
+
+<br>
 -** Ruvik perera  ([@ruvik2000](https://github.com/ruvik2000)) **
 -** Madushan Neelananda  ([@madushan1299](https://github.com/madushan1299)) **
 -** Ravishan Premarathne  ([@ravishan123](https://github.com/ravishan123)) **
