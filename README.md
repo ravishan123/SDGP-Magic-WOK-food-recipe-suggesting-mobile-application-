@@ -1,6 +1,6 @@
 # Software Development Group Project - Magic-WOK(food recipe suggesting mobile application)
 
-https://user-images.githubusercontent.com/66440787/118847393-52265000-b8eb-11eb-8436-06b4d1ca6c7e.gif
+
 
 <img align="left" alt="Visual Studio Code" width="auto" src="https://user-images.githubusercontent.com/66440787/118847393-52265000-b8eb-11eb-8436-06b4d1ca6c7e.gif" />
 
@@ -23,11 +23,12 @@ The Django framework is written in python and it’s a well-structured framework
 
 
 Data base - SQLite
-
+<br>
 
 <img align="left" alt="Visual Studio Code" width="500px" src="https://user-images.githubusercontent.com/66440787/118846131-0921cc00-b8ea-11eb-9972-2191deeeaa6a.jpg" />
 
-
+<br>
+<br>
 ### Who are we ?
 
 Team GENEX
