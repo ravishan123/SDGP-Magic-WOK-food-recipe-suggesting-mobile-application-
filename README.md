@@ -26,15 +26,13 @@ Data base - SQLite
 <br>
 
 <img align="left" alt="Visual Studio Code" width="500px" src="https://user-images.githubusercontent.com/66440787/118846131-0921cc00-b8ea-11eb-9972-2191deeeaa6a.jpg" />
-
+<div></div>
 
 <br>
 <br>
-<br><br>
 <br>
 <br>
-
-
+<br>
 
 
 
@@ -81,6 +79,15 @@ Thushamini Chathushika  ([@chathushika2000](https://github.com/chathushika2000))
  Madushan Neelananda  ([@madushan1299](https://github.com/madushan1299)) 
 <br>
  Ravishan Premarathne  ([@ravishan123](https://github.com/ravishan123)) 
+
+
+
+- **Venuli  Nanayakkara ([@JoyMace](https://github.com/JoyMace))** 
+- **Jacob Bloom ([@mrjacobbloom](https://github.com/mrjacobbloom))** - server and testing
+- **Robert Rosetti ([@RobertRossetti](https://github.com/RobertRossetti))** - database
+- **Eliott Ishak ([@elis7999](https://github.com/elis7999))** - maps and Google APIs
+- **Tuqa Alaithan ([@Totoistough](https://github.com/Totoistough))** - front-end design
+- **Jun Sheng ([@sntst](https://github.com/sntst))** - front-end design
 
 
 
