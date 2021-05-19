@@ -5,6 +5,12 @@
 <img align="left" alt="Visual Studio Code" width="300px" src="https://user-images.githubusercontent.com/66440787/118847393-52265000-b8eb-11eb-8436-06b4d1ca6c7e.gif" />
 
 
+<img align="left" alt="Visual Studio Code" width="400px" src="https://user-images.githubusercontent.com/66440787/118846131-0921cc00-b8ea-11eb-9972-2191deeeaa6a.jpg" />
+
+<br />
+
+
+
 ## Tech Stack
 
 Frontend - React-Native
@@ -28,11 +34,6 @@ Data base - SQLite
 
 <br />
 
-
-
-<img align="left" alt="Visual Studio Code" width="400px" src="https://user-images.githubusercontent.com/66440787/118846131-0921cc00-b8ea-11eb-9972-2191deeeaa6a.jpg" />
-
-<br />
 
 <br />
 
