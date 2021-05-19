@@ -13,7 +13,7 @@
 <br />
 <br />
 <br />
-## Tech Stack
+# Tech Stack
 <br /><br />
 
 Frontend - React-Native
