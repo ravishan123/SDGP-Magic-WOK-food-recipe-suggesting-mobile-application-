@@ -73,9 +73,11 @@ Data base - SQLite
 
 
 <br />
+# Magic-Wok App
 
-### Output
+<img align="left" alt="Visual Studio Code" width="auto" src="https://user-images.githubusercontent.com/66440787/118860235-c6b3bb80-b8f8-11eb-8838-a05f7e9fc7db.jpg" />
 
-<br />
-<br />
+
+
+
 
