@@ -58,9 +58,9 @@ Data base - SQLite
 
 - **Venuli  Nanayakkara ([@venunana](https://github.com/venunana))** 
 - **Nanduni Gajanayaka([@nadzmihisaree](https://github.com/nadzmihisaree))**
-- **Thushamini Gajanayaka ([@chathushika2000](https://github.com/chathushika2000))**
-- **Ruvik Chathushika ([@ruvik2000](https://github.com/ruvik2000))** 
-- **Madushan Neelananda ([@ruvik2000](https://github.com/madushan1299))**
+- **Thushamini Chathushika ([@chathushika2000](https://github.com/chathushika2000))**
+- **Ruvik Perera ([@ruvik2000](https://github.com/ruvik2000))** 
+- **Madushan Neelananda ([@madushan1299](https://github.com/madushan1299))**
 - **Ravishan Premarathne([@ravishan123](https://github.com/ravishan123))** 
 
 
